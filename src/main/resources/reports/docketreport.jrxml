@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="docketreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="871055d0-3d99-48e0-9e27-9f074294c9dc">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="BatchReports"/>
+	<queryString language="SQL">
+		<![CDATA[select batch_date,batch_start_time,batch_end_time,batch_no,customer_code,site,recipe_code,
+recipe_name,truck_no,truck_driver,order_no,batcher_name,ordered_qty,production_qty,withthisload,mixer_capacity,
+batch_size
+from trn_rmc_batch]]>
+	</queryString>
+	<field name="batch_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="batch_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="batch_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="batch_start_time" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="batch_start_time"/>
+		<property name="com.jaspersoft.studio.field.label" value="batch_start_time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="batch_end_time" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="batch_end_time"/>
+		<property name="com.jaspersoft.studio.field.label" value="batch_end_time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="batch_no" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="batch_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="batch_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="customer_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="customer_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="customer_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="site" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="site"/>
+		<property name="com.jaspersoft.studio.field.label" value="site"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="recipe_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="recipe_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="recipe_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="recipe_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="recipe_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="recipe_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="truck_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="truck_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="truck_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="truck_driver" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="truck_driver"/>
+		<property name="com.jaspersoft.studio.field.label" value="truck_driver"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="order_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="order_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="order_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="batcher_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="batcher_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="batcher_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="ordered_qty" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="ordered_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="ordered_qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="production_qty" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="production_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="production_qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="withthisload" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="withthisload"/>
+		<property name="com.jaspersoft.studio.field.label" value="withthisload"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="mixer_capacity" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="mixer_capacity"/>
+		<property name="com.jaspersoft.studio.field.label" value="mixer_capacity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<field name="batch_size" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="batch_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="batch_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="trn_rmc_batch"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="10" width="221" height="41" uuid="60b38ac0-bd3c-432e-bf98-d67ca24d72a0"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[READYMIX  CONCRETE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="-33" width="290" height="21" uuid="bef20689-3454-4529-9446-6ad01a6ebace"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MCI 70 N Control System Ver 3.0]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="-57" width="50" height="50" uuid="3b1c12b2-e307-43f1-9d8d-50e3dc4a1557"/>
+				<imageExpression><![CDATA["E:/freelance/batchdocket.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="130" y="21" width="351" height="21" uuid="071e8f8a-07de-477b-b35a-ff19f8102e35"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Docket / Batch Report /Autographic Record]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="452" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="126" width="188" height="31" uuid="24f4acf9-8bdf-4861-85ef-f3ee50386b23"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batch Number / Docket Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-8" y="38" width="111" height="31" uuid="015c11ec-60f1-4401-a14c-3cc3b8df74ac"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batch Start Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-8" y="76" width="111" height="31" uuid="2fd28db6-a759-44e9-8da4-78093e9f8865"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batch End Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="10" width="41" height="20" uuid="f5f03b7c-21e7-4930-8cc0-910ee8b72a8f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="44" width="41" height="20" uuid="7305b319-2593-4222-8422-9e997e38ff29"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="146" y="82" width="41" height="20" uuid="1a88fcd5-d0dd-4d56-b615-c6c93afb14e9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="193" y="10" width="81" height="21" uuid="cc58e84e-9005-4e6e-a345-c7ec8dd37f0e"/>
+				<textFieldExpression><![CDATA[$F{batch_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="47" width="81" height="21" uuid="865bad42-c626-4cf6-849d-5c6e4f8c5565"/>
+				<textFieldExpression><![CDATA[$F{batch_start_time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="81" width="81" height="21" uuid="98bd045d-1b31-4aa3-8a45-ac71478ffae7"/>
+				<textFieldExpression><![CDATA[$F{batch_end_time}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="394" y="11" width="133" height="21" uuid="49dee6ad-2fa3-42e4-8c6f-c64f43ad3d62"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plant Serial Number :	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="156" width="188" height="31" uuid="d1c77fe3-6df2-41a5-b9e5-b1855ca95cda">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="192" width="188" height="31" uuid="d8fe9c8f-04d2-4cb3-8062-19f263ec3564"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Site]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="228" width="188" height="31" uuid="6cb87803-3c7f-4369-8643-c99411a63f05"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recipe Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="263" width="188" height="31" uuid="3c100329-b67d-46d0-86d4-5132b1ef98ae"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recipe Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="298" width="188" height="31" uuid="686bde94-20b5-42ed-be70-b97dd7cc4427"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Truck Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="335" width="188" height="31" uuid="a03e0f16-a07b-468e-a30f-6062c9a8b3e4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Truck Driver]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="371" width="188" height="31" uuid="2bd806dd-1cee-48a9-87f0-f040504a1636"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Order Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="405" width="188" height="31" uuid="eedd6dbc-189b-4245-83ef-7d8a453a18ae"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batcher Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-6" y="6" width="111" height="31" uuid="b355012b-7eb5-411f-962d-9346669ec193"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batch Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="130" width="25" height="21" uuid="5e4f9561-7bbc-4deb-b7c1-ddc88ff36674">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="162" width="25" height="21" uuid="79ac9901-29fd-4dc0-bf4e-a0ee3e58983b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="200" width="28" height="21" uuid="05153c63-d89a-4fa5-a461-30680f2edd5b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="232" width="29" height="21" uuid="5ac075cb-6af2-4cb3-b75e-4f7235e4a6d8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="266" width="30" height="21" uuid="bf0b6a61-07db-481f-9e2e-e686614cf5bc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="298" width="31" height="21" uuid="580ffd38-6e93-4ee6-8b25-efc0da5ba1cb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="339" width="31" height="21" uuid="6bcbe72f-8cd0-4063-8758-5552b95e6d45">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="371" width="32" height="21" uuid="a865a19e-5bb8-4d38-a18d-c0e622bc594a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="407" width="32" height="21" uuid="50b83c5d-4574-42d2-a046-d6a3f4d5d92b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="128" width="130" height="31" uuid="c2f506ca-dc2a-47b3-9e17-4205a2ac4da4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ordered Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="208" width="130" height="31" uuid="5b22dc4b-4c18-40a3-9e58-e4e5117e2d58"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Adj / Manual Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="165" width="130" height="31" uuid="688fbaf6-e0b0-4baa-b088-7d0430989fc1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Production Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="248" width="130" height="31" uuid="6614cc88-108f-4be4-b1d0-cd8ba0d6b9fe"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[With This Load]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="288" width="130" height="31" uuid="ada50e98-260c-42b4-9f20-7ba750febc00"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mixer Capacity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="328" width="130" height="31" uuid="abc30d09-3fe1-4170-a439-50fbabb42c7c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batch Size]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="133" width="25" height="21" uuid="960fc5bc-4557-459b-9cd1-68cb67fc78c2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="165" width="25" height="21" uuid="574aa151-94d5-4dfb-9775-0d954dd98a5b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="252" width="25" height="21" uuid="295c4a59-a353-473a-b04f-92e3cb755ece">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="211" width="25" height="21" uuid="dba9b5f8-857a-420d-ab53-351813c742bf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="293" width="25" height="21" uuid="dd2ac6ed-df3b-4a63-a69e-a0c44308eb65">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="333" width="25" height="21" uuid="d0f30a20-48ba-44f3-99d4-ac5f8d9e8fb3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="497" y="130" width="31" height="31" uuid="740dc2e0-9c28-4fcf-903a-b28f62a10fcf"/>
+				<textFieldExpression><![CDATA[$F{ordered_qty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="537" y="130" width="20" height="31" uuid="fb37ba21-7934-4531-b440-2a81b882a33c"/>
+				<text><![CDATA[M^3]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="500" y="170" width="31" height="21" uuid="b83314f5-069b-40fb-ad88-120c90acd6dd"/>
+				<textFieldExpression><![CDATA[$F{production_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="213" width="31" height="21" uuid="9922bc89-c6cf-4642-a530-6b18ef454ce6"/>
+				<textFieldExpression><![CDATA[null]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="333" width="31" height="21" uuid="febfef52-017b-4210-a8e0-1e96c54900d6"/>
+				<textFieldExpression><![CDATA[$F{batch_size}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="293" width="31" height="21" uuid="8356d0d5-54d4-4bb6-9486-1353df5e269e"/>
+				<textFieldExpression><![CDATA[$F{mixer_capacity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="250" width="31" height="21" uuid="cafa5c3e-f381-4143-bd6f-1ec653dab695"/>
+				<textFieldExpression><![CDATA[$F{withthisload}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="540" y="332" width="20" height="19" uuid="5f2b14d0-d0f8-460b-a908-312344f66627"/>
+				<text><![CDATA[M^3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="537" y="291" width="20" height="19" uuid="b717341e-e5a6-416e-a8f6-0593d850efe6"/>
+				<text><![CDATA[M^3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="540" y="250" width="20" height="19" uuid="02ea18a4-f6af-4b53-a493-fe34a1ccfefd"/>
+				<text><![CDATA[M^3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="537" y="211" width="20" height="19" uuid="a7cd5910-6fde-4c82-8cd8-2e1b4695a44a"/>
+				<text><![CDATA[M^3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="537" y="170" width="20" height="19" uuid="0a423aa1-083f-4e54-b80d-24dc4e9fae94"/>
+				<text><![CDATA[M^3]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="130" width="71" height="21" uuid="ea6be8af-b976-4d6c-af85-9a9cc3dcc8a0"/>
+				<textFieldExpression><![CDATA[$F{batch_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="160" width="71" height="21" uuid="bd4be800-c070-4fb9-8ad0-2569b5d8443f"/>
+				<textFieldExpression><![CDATA[$F{customer_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="200" width="71" height="21" uuid="69378501-0047-4430-a030-9a0e63427f56"/>
+				<textFieldExpression><![CDATA[$F{site}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="230" width="71" height="31" uuid="ebef6a93-20f1-42bb-a344-dfa60e8a6062"/>
+				<textFieldExpression><![CDATA[$F{recipe_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="270" width="71" height="21" uuid="3f76958c-f5bb-4930-93c0-66b0183cdd12"/>
+				<textFieldExpression><![CDATA[$F{recipe_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="300" width="71" height="21" uuid="93078d08-a593-4a54-b861-bcbfd63c487c"/>
+				<textFieldExpression><![CDATA[$F{truck_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="340" width="81" height="21" uuid="4a258c55-ab65-4f76-81f7-0d6f9cde0bb9"/>
+				<textFieldExpression><![CDATA[$F{truck_driver}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="370" width="81" height="21" uuid="ad343fa2-7de8-4ea7-b81c-251080de92bf"/>
+				<textFieldExpression><![CDATA[$F{ordered_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="410" width="81" height="21" uuid="ad3af17d-9b1d-4825-830f-e5bd424cd66d"/>
+				<textFieldExpression><![CDATA[$F{batcher_name}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="741">
+			<staticText>
+				<reportElement x="1" y="13" width="87" height="28" uuid="17e607bc-2586-4218-9d48-a9dfb42e6b8f"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aggregate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="13" width="91" height="29" uuid="535e453c-43c6-4cb2-8df3-5cc807acc314"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="14" width="91" height="29" uuid="25f8fccf-de9a-496a-99f8-d028b25b091b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Silica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="12" width="91" height="29" uuid="e10a2d1f-8973-4637-90a3-0e96691ee44c"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Water]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="14" width="91" height="29" uuid="2c85d352-7764-4165-8fc3-b87b56cb4ff0"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Admixture]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
