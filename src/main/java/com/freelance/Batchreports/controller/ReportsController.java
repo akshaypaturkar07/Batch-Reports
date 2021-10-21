@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -43,8 +44,9 @@ public class ReportsController {
     @ApiOperation(value = SwaggerConstants.GENERATE_PDF,nickname = SwaggerConstants.GENERATE_PDF_NICK)
     @ApiResponses(value = {@ApiResponse(code = 200, message = SwaggerConstants.GENERATE_PDF_200_OK)})
     @GetMapping("/generatePdfReport")
-    public ResponseEntity<?> generateReport(@RequestParam("batchNum") String batchNum){
+    public ResponseEntity<?> generateReport(@RequestParam BigDecimal batchNum,@RequestParam BigDecimal id){
         logger.info("Generating PDF report for batch number "+batchNum);
+        reportService.generateReports(batchNum,id);
         return null;
     }
 }

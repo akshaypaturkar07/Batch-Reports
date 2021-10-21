@@ -8,10 +8,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Repository
 public interface BatchDetailRepository extends CrudRepository<TrnRmcBatchDetail, BigDecimal> {
     @Query(value = ReportsQueryConstants.GET_BATCH_DETAIL_BY_BATCHNO,nativeQuery = true)
-    public List<TrnRmcBatchDetail> getBatchDetailsByBatchNo(@Param("batchNo") String batchNo);
+    Iterable<Object[]> getBatchDetailsByBatchNo(@Param("batchNo") BigDecimal batchNo,@Param("id") BigDecimal id);
 }
