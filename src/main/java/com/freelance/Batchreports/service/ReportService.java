@@ -1,5 +1,7 @@
 package com.freelance.Batchreports.service;
 
+import com.freelance.Batchreports.dtos.BatchDetailDto;
+import com.freelance.Batchreports.dtos.BatchReportDto;
 import com.freelance.Batchreports.entities.TrnRmcBatch;
 import com.freelance.Batchreports.entities.TrnRmcBatchDetail;
 import com.freelance.Batchreports.repositories.BatchDetailRepository;
@@ -12,7 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @Service
 public class ReportService {
@@ -27,22 +34,75 @@ public class ReportService {
     @Autowired
     private PlantRepository plantRepository;
 
-    public List<TrnRmcBatch> getBatchData(){
+    public List<TrnRmcBatch> getBatchData() {
         logger.info("Fetching batch data");
-        return (List<TrnRmcBatch>)batchRepository.findAll();
+        return (List<TrnRmcBatch>) batchRepository.findAll();
     }
 
-    public List<TrnRmcBatchDetail> getBatchDetailsData(){
+    public List<TrnRmcBatchDetail> getBatchDetailsData() {
         logger.info("Fetching batch details data");
-        return (List<TrnRmcBatchDetail>)batchDetailRepository.findAll();
+        return (List<TrnRmcBatchDetail>) batchDetailRepository.findAll();
     }
 
-    public void generateReports(BigDecimal batchNo,BigDecimal id){
+    public BatchReportDto generateReports(BigDecimal batchNo, BigDecimal id) {
         logger.info("Generating PDF report");
-        String customerName = vendorRepository.getCustomerName(id);
-        String planSerialNumber = plantRepository.getPlantSerialNumber(id);
-        Object batch = batchRepository.getBatchByBatchNo(batchNo,id);
-        Iterable<Object[]> batchDetails = batchDetailRepository.getBatchDetailsByBatchNo(batchNo,id);
+        Iterable<Object[]> reportData = batchRepository.getReportsData(batchNo, id);
+        return formBatchReportsData(reportData);
+    }
 
+    private BatchReportDto formBatchReportsData(Iterable<Object[]> objects) {
+        BatchReportDto batchReportDto = new BatchReportDto();
+        List<BatchDetailDto> batchDetailDtoList = new ArrayList<>();
+        Optional<Object[]> optionalObjects = StreamSupport.stream(objects.spliterator(),false).findFirst();
+        if(optionalObjects.isPresent()){
+            Object[] obj = optionalObjects.get();
+            batchReportDto = formBatchReports(obj);
+        }
+        StreamSupport.stream(objects.spliterator(),false).forEach(object ->{
+            BatchDetailDto batchDetailDto = formBatchDetails(object);
+            batchDetailDtoList.add(batchDetailDto);
+        });
+        batchReportDto.setBatchDetailDtoList(batchDetailDtoList);
+        return batchReportDto;
+    }
+    private BatchDetailDto formBatchDetails(Object[] object){
+        BatchDetailDto batchDetailDto = new BatchDetailDto();
+        batchDetailDto.setGate1Actual((BigDecimal) object[18]);
+        batchDetailDto.setGate2Actual((BigDecimal) object[19]);
+        batchDetailDto.setGate3Actual((BigDecimal) object[20]);
+        batchDetailDto.setGate4Actual((BigDecimal) object[21]);
+        batchDetailDto.setGate5Actual((BigDecimal) object[22]);
+        batchDetailDto.setCement1Actual((BigDecimal) object[23]);
+        batchDetailDto.setFiller1Actual((BigDecimal) object[24]);
+        batchDetailDto.setWater1Actual((BigDecimal) object[25]);
+        batchDetailDto.setWater1Target((BigDecimal) object[26]);
+        batchDetailDto.setWater2Actual((BigDecimal) object[27]);
+        batchDetailDto.setSilicaActual((BigDecimal) object[28]);
+        batchDetailDto.setAdm1Actual1((BigDecimal) object[29]);
+        batchDetailDto.setAdm2Actual1((BigDecimal) object[30]);
+        return batchDetailDto;
+    }
+
+    private BatchReportDto formBatchReports(Object[] obj){
+        BatchReportDto batchReportDto = new BatchReportDto();
+        batchReportDto.setBatchDate((Date) obj[0]);
+        batchReportDto.setBatchStartTime((String) obj[1]);
+        batchReportDto.setBatchEndTime((String) obj[2]);
+        batchReportDto.setBatchNo((BigDecimal) obj[3]);
+        batchReportDto.setSite((String) obj[4]);
+        batchReportDto.setRecipeCode((String) obj[5]);
+        batchReportDto.setRecipeName((String) obj[6]);
+        batchReportDto.setTruckNo((String) obj[7]);
+        batchReportDto.setTruckDriver((String) obj[8]);
+        batchReportDto.setOrderNo((String) obj[9]);
+        batchReportDto.setBatcherName((String) obj[10]);
+        batchReportDto.setOrderedQty((BigDecimal) obj[11]);
+        batchReportDto.setProductionQty((BigDecimal) obj[12]);
+        batchReportDto.setWiththisload((BigDecimal) obj[13]);
+        batchReportDto.setMixerCapacity((BigDecimal) obj[14]);
+        batchReportDto.setBatchSize((BigDecimal) obj[15]);
+        batchReportDto.setPlantRegNo((String) obj[16]);
+        batchReportDto.setCustVendorName((String) obj[17]);
+        return batchReportDto;
     }
 }

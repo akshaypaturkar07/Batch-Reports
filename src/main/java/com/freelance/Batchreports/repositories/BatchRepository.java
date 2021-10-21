@@ -13,4 +13,7 @@ import java.math.BigDecimal;
 public interface BatchRepository extends CrudRepository<TrnRmcBatch, BigDecimal> {
     @Query(value = ReportsQueryConstants.GET_BATCH_BY_BATCHNO,nativeQuery = true)
     Object getBatchByBatchNo(@Param("batchNo") BigDecimal batchNo,@Param("id") BigDecimal id);
+
+    @Query(value = ReportsQueryConstants.GET_AGGREGATED_DATA_BATCH_REPORTS,nativeQuery = true)
+    Iterable<Object[]> getReportsData(@Param("batchNo") BigDecimal batchNo,@Param("id") BigDecimal id);
 }

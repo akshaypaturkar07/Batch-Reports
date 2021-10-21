@@ -23,4 +23,6 @@ public class BatchDto {
     private BigDecimal withthisload;
     private BigDecimal mixerCapacity;
     private BigDecimal batchSize;
+    private String plantRegNo;
+    private String custVendorName;
 }
