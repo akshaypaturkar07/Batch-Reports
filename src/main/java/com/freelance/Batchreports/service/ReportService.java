@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -53,37 +52,38 @@ public class ReportService {
     private BatchReportDto formBatchReportsData(Iterable<Object[]> objects) {
         BatchReportDto batchReportDto = new BatchReportDto();
         List<BatchDetailDto> batchDetailDtoList = new ArrayList<>();
-        Optional<Object[]> optionalObjects = StreamSupport.stream(objects.spliterator(),false).findFirst();
-        if(optionalObjects.isPresent()){
+        Optional<Object[]> optionalObjects = StreamSupport.stream(objects.spliterator(), false).findFirst();
+        if (optionalObjects.isPresent()) {
             Object[] obj = optionalObjects.get();
             batchReportDto = formBatchReports(obj);
         }
-        StreamSupport.stream(objects.spliterator(),false).forEach(object ->{
+        StreamSupport.stream(objects.spliterator(), false).forEach(object -> {
             BatchDetailDto batchDetailDto = formBatchDetails(object);
             batchDetailDtoList.add(batchDetailDto);
         });
         batchReportDto.setBatchDetailDtoList(batchDetailDtoList);
         return batchReportDto;
     }
-    private BatchDetailDto formBatchDetails(Object[] object){
+
+    private BatchDetailDto formBatchDetails(Object[] object) {
         BatchDetailDto batchDetailDto = new BatchDetailDto();
-        batchDetailDto.setGate1Actual((BigDecimal) object[18]);
-        batchDetailDto.setGate2Actual((BigDecimal) object[19]);
-        batchDetailDto.setGate3Actual((BigDecimal) object[20]);
-        batchDetailDto.setGate4Actual((BigDecimal) object[21]);
-        batchDetailDto.setGate5Actual((BigDecimal) object[22]);
-        batchDetailDto.setCement1Actual((BigDecimal) object[23]);
-        batchDetailDto.setFiller1Actual((BigDecimal) object[24]);
-        batchDetailDto.setWater1Actual((BigDecimal) object[25]);
-        batchDetailDto.setWater1Target((BigDecimal) object[26]);
-        batchDetailDto.setWater2Actual((BigDecimal) object[27]);
-        batchDetailDto.setSilicaActual((BigDecimal) object[28]);
-        batchDetailDto.setAdm1Actual1((BigDecimal) object[29]);
-        batchDetailDto.setAdm2Actual1((BigDecimal) object[30]);
+        batchDetailDto.setGate1Actual((BigDecimal) object[31]);
+        batchDetailDto.setGate2Actual((BigDecimal) object[32]);
+        batchDetailDto.setGate3Actual((BigDecimal) object[33]);
+        batchDetailDto.setGate4Actual((BigDecimal) object[34]);
+        batchDetailDto.setGate5Actual((BigDecimal) object[35]);
+        batchDetailDto.setCement1Actual((BigDecimal) object[36]);
+        batchDetailDto.setFiller1Actual((BigDecimal) object[37]);
+        batchDetailDto.setWater1Actual((BigDecimal) object[38]);
+        batchDetailDto.setWater1Target((BigDecimal) object[39]);
+        batchDetailDto.setWater2Actual((BigDecimal) object[40]);
+        batchDetailDto.setSilicaActual((BigDecimal) object[41]);
+        batchDetailDto.setAdm1Actual1((BigDecimal) object[42]);
+        batchDetailDto.setAdm2Actual1((BigDecimal) object[43]);
         return batchDetailDto;
     }
 
-    private BatchReportDto formBatchReports(Object[] obj){
+    private BatchReportDto formBatchReports(Object[] obj) {
         BatchReportDto batchReportDto = new BatchReportDto();
         batchReportDto.setBatchDate((Date) obj[0]);
         batchReportDto.setBatchStartTime((String) obj[1]);
@@ -103,6 +103,20 @@ public class ReportService {
         batchReportDto.setBatchSize((BigDecimal) obj[15]);
         batchReportDto.setPlantRegNo((String) obj[16]);
         batchReportDto.setCustVendorName((String) obj[17]);
+        batchReportDto.setAgg1Name((String) obj[18]);
+        batchReportDto.setAgg2Name((String) obj[19]);
+        batchReportDto.setAgg3Name((String) obj[20]);
+        batchReportDto.setAgg4Name((String) obj[21]);
+        batchReportDto.setAgg5Name((String) obj[22]);
+        batchReportDto.setCement1Name((String) obj[23]);
+        batchReportDto.setCement2Name((String) obj[24]);
+        batchReportDto.setFillName((String) obj[25]);
+        batchReportDto.setWater1Name((String) obj[26]);
+        batchReportDto.setWater2Name((String) obj[27]);
+        batchReportDto.setSilicaName((String) obj[28]);
+        batchReportDto.setAdmix1Name((String) obj[29]);
+        batchReportDto.setAdmix2Name((String) obj[30]);
+        batchReportDto.setPlantName((String) obj[44]);
         return batchReportDto;
     }
 }
