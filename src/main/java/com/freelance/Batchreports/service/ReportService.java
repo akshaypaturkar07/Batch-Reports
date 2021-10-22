@@ -8,16 +8,18 @@ import com.freelance.Batchreports.repositories.BatchDetailRepository;
 import com.freelance.Batchreports.repositories.BatchRepository;
 import com.freelance.Batchreports.repositories.PlantRepository;
 import com.freelance.Batchreports.repositories.VendorRepository;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -43,10 +45,23 @@ public class ReportService {
         return (List<TrnRmcBatchDetail>) batchDetailRepository.findAll();
     }
 
-    public BatchReportDto generateReports(BigDecimal batchNo, BigDecimal id) {
-        logger.info("Generating PDF report");
-        Iterable<Object[]> reportData = batchRepository.getReportsData(batchNo, id);
-        return formBatchReportsData(reportData);
+    public String generateReports(BigDecimal batchNo, BigDecimal id) {
+        String result = null;
+        try{
+            logger.info("Generating PDF report");
+            Iterable<Object[]> reportData = batchRepository.getReportsData(batchNo, id);
+            BatchReportDto  batchReportDto =  formBatchReportsData(reportData);
+            File file = ResourceUtils.getFile("classpath:/report/docketreport.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(batchReportDto.getBatchDetailDtoList());
+            Map<String,Object> parameters = new HashMap<>();
+            parameters.put("Created By","Java Geek");
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,dataSource);
+            JasperExportManager.exportReportToPdfFile(jasperPrint,".\\test.pdf");
+        }catch (Exception e){
+            logger.error("Exception occurred while processing report");
+        }
+        return result;
     }
 
     private BatchReportDto formBatchReportsData(Iterable<Object[]> objects) {

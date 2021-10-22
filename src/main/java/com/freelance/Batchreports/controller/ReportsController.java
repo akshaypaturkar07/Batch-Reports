@@ -1,7 +1,6 @@
 package com.freelance.Batchreports.controller;
 
 import com.freelance.Batchreports.constants.SwaggerConstants;
-import com.freelance.Batchreports.dtos.BatchReportDto;
 import com.freelance.Batchreports.entities.TrnRmcBatch;
 import com.freelance.Batchreports.entities.TrnRmcBatchDetail;
 import com.freelance.Batchreports.service.ReportService;
@@ -48,7 +47,7 @@ public class ReportsController {
     @GetMapping("/generatePdfReport")
     public ResponseEntity<?> generateReport(@RequestParam BigDecimal batchNum, @RequestParam BigDecimal id) {
         ResponseEntity responseEntity;
-        BatchReportDto batchReportDto = null;
+        String batchReportDto = null;
         try {
             logger.info("Generating PDF report for batch number " + batchNum);
             batchReportDto = reportService.generateReports(batchNum, id);
