@@ -45,12 +45,12 @@ public class ReportsController {
     @ApiOperation(value = SwaggerConstants.GENERATE_PDF, nickname = SwaggerConstants.GENERATE_PDF_NICK)
     @ApiResponses(value = {@ApiResponse(code = 200, message = SwaggerConstants.GENERATE_PDF_200_OK)})
     @GetMapping("/generatePdfReport")
-    public ResponseEntity<?> generateReport(@RequestParam BigDecimal batchNum, @RequestParam BigDecimal id) {
+    public ResponseEntity<?> generateReport(@RequestParam BigDecimal batchNum, @RequestParam BigDecimal id, @RequestParam BigDecimal contactId, @RequestParam BigDecimal plantId) {
         ResponseEntity responseEntity;
         String batchReportDto = null;
         try {
             logger.info("Generating PDF report for batch number " + batchNum);
-            batchReportDto = reportService.generateReports(batchNum, id);
+            batchReportDto = reportService.generateReports(batchNum, id,contactId,plantId);
             responseEntity = new ResponseEntity<>(batchReportDto, HttpStatus.OK);
         } catch (Exception e) {
             logger.error("Exception occurred while generating PDF reports {}" + e);

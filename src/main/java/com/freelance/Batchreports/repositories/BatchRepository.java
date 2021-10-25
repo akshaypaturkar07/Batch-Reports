@@ -15,5 +15,5 @@ public interface BatchRepository extends CrudRepository<TrnRmcBatch, BigDecimal>
     Object getBatchByBatchNo(@Param("batchNo") BigDecimal batchNo,@Param("id") BigDecimal id);
 
     @Query(value = ReportsQueryConstants.GET_AGGREGATED_DATA_BATCH_REPORTS,nativeQuery = true)
-    Iterable<Object[]> getReportsData(@Param("batchNo") BigDecimal batchNo,@Param("id") BigDecimal id);
+    Iterable<Object[]> getReportsData(@Param("batchNo") BigDecimal batchNo,@Param("id") BigDecimal id,@Param("conId") BigDecimal conId,@Param("plantId") BigDecimal plantId);
 }

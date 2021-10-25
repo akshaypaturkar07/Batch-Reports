@@ -9,6 +9,7 @@ import com.freelance.Batchreports.repositories.BatchRepository;
 import com.freelance.Batchreports.repositories.PlantRepository;
 import com.freelance.Batchreports.repositories.VendorRepository;
 import net.sf.jasperreports.engine.*;
+
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,11 +46,11 @@ public class ReportService {
         return (List<TrnRmcBatchDetail>) batchDetailRepository.findAll();
     }
 
-    public String generateReports(BigDecimal batchNo, BigDecimal id) {
+    public String generateReports(BigDecimal batchNo, BigDecimal id,BigDecimal contactId, BigDecimal plantId) {
         String result = null;
         try{
             logger.info("Generating PDF report");
-            Iterable<Object[]> reportData = batchRepository.getReportsData(batchNo, id);
+            Iterable<Object[]> reportData = batchRepository.getReportsData(batchNo, id,contactId,plantId);
             BatchReportDto  batchReportDto =  formBatchReportsData(reportData);
             File file = ResourceUtils.getFile("classpath:/report/docketreport.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
