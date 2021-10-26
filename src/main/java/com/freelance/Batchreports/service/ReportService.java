@@ -9,17 +9,15 @@ import com.freelance.Batchreports.repositories.BatchRepository;
 import com.freelance.Batchreports.repositories.PlantRepository;
 import com.freelance.Batchreports.repositories.VendorRepository;
 import net.sf.jasperreports.engine.*;
-
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.util.*;
 import java.util.stream.StreamSupport;
 
@@ -46,23 +44,25 @@ public class ReportService {
         return (List<TrnRmcBatchDetail>) batchDetailRepository.findAll();
     }
 
-    public String generateReports(BigDecimal batchNo, BigDecimal id,BigDecimal contactId, BigDecimal plantId) {
-        String result = null;
+    public byte[] generateReports(BigDecimal batchNo, BigDecimal id, BigDecimal contactId, BigDecimal plantId) {
+        ByteArrayOutputStream  byteArrayOutputStream = new ByteArrayOutputStream() ;
         try{
             logger.info("Generating PDF report");
             Iterable<Object[]> reportData = batchRepository.getReportsData(batchNo, id,contactId,plantId);
             BatchReportDto  batchReportDto =  formBatchReportsData(reportData);
-            File file = ResourceUtils.getFile("classpath:/report/docketreport.jrxml");
-            JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(batchReportDto.getBatchDetailDtoList());
-            Map<String,Object> parameters = new HashMap<>();
-            parameters.put("Created By","Java Geek");
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,dataSource);
-            JasperExportManager.exportReportToPdfFile(jasperPrint,".\\test.pdf");
+            String jrxmlPath = "classpath:/reports/docketreport.jrxml";
+            String jasperPath = "classpath:/reports/docketreport.jasper";
+            JasperCompileManager.compileReportToFile(jrxmlPath,jasperPath);
+            File file = new File(jasperPath);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(file);
+            Map<String,Object> parameters = buildParamMap(batchReportDto);
+            JasperPrint  jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,new JREmptyDataSource());
+            JasperExportManager.exportReportToPdfStream(jasperPrint,byteArrayOutputStream);
+
         }catch (Exception e){
             logger.error("Exception occurred while processing report");
         }
-        return result;
+        return byteArrayOutputStream.toByteArray();
     }
 
     private BatchReportDto formBatchReportsData(Iterable<Object[]> objects) {
@@ -78,31 +78,33 @@ public class ReportService {
             batchDetailDtoList.add(batchDetailDto);
         });
         batchReportDto.setBatchDetailDtoList(batchDetailDtoList);
-        return batchReportDto;
+        batchReportDto = setTotalWeightsData(batchReportDto);
+        return setCalculatedParams(batchReportDto);
     }
 
     private BatchDetailDto formBatchDetails(Object[] object) {
         BatchDetailDto batchDetailDto = new BatchDetailDto();
-        batchDetailDto.setGate1Actual((BigDecimal) object[31]);
-        batchDetailDto.setGate2Actual((BigDecimal) object[32]);
-        batchDetailDto.setGate3Actual((BigDecimal) object[33]);
-        batchDetailDto.setGate4Actual((BigDecimal) object[34]);
-        batchDetailDto.setGate5Actual((BigDecimal) object[35]);
-        batchDetailDto.setCement1Actual((BigDecimal) object[36]);
-        batchDetailDto.setFiller1Actual((BigDecimal) object[37]);
-        batchDetailDto.setWater1Actual((BigDecimal) object[38]);
-        batchDetailDto.setWater1Target((BigDecimal) object[39]);
-        batchDetailDto.setWater2Actual((BigDecimal) object[40]);
-        batchDetailDto.setSilicaActual((BigDecimal) object[41]);
-        batchDetailDto.setAdm1Actual1((BigDecimal) object[42]);
-        batchDetailDto.setAdm2Actual1((BigDecimal) object[43]);
+        batchDetailDto.setGate1Actual((BigDecimal) object[44]);
+        batchDetailDto.setGate2Actual((BigDecimal) object[45]);
+        batchDetailDto.setGate3Actual((BigDecimal) object[46]);
+        batchDetailDto.setGate4Actual((BigDecimal) object[47]);
+        batchDetailDto.setGate5Actual((BigDecimal) object[48]);
+        batchDetailDto.setCement1Actual((BigDecimal) object[49]);
+        batchDetailDto.setCement2Actual((BigDecimal) object[50]);
+        batchDetailDto.setFiller1Actual((BigDecimal) object[51]);
+        batchDetailDto.setWater1Actual((BigDecimal) object[52]);
+        batchDetailDto.setWater2Actual((BigDecimal) object[53]);
+        batchDetailDto.setSilicaActual((BigDecimal) object[54]);
+        batchDetailDto.setAdm1Actual1((BigDecimal) object[55]);
+        batchDetailDto.setAdm2Actual1((BigDecimal) object[56]);
         return batchDetailDto;
     }
 
     private BatchReportDto formBatchReports(Object[] obj) {
         BatchReportDto batchReportDto = new BatchReportDto();
-        batchReportDto.setBatchDate((Date) obj[0]);
-        batchReportDto.setBatchStartTime((String) obj[1]);
+        java.sql.Date batchDate = (java.sql.Date)obj[0];
+        batchReportDto.setBatchDate(batchDate.toString().split(",")[0]);
+        batchReportDto.setBatchStartTime(String.valueOf(obj[1]));
         batchReportDto.setBatchEndTime((String) obj[2]);
         batchReportDto.setBatchNo((BigDecimal) obj[3]);
         batchReportDto.setSite((String) obj[4]);
@@ -132,7 +134,60 @@ public class ReportService {
         batchReportDto.setSilicaName((String) obj[28]);
         batchReportDto.setAdmix1Name((String) obj[29]);
         batchReportDto.setAdmix2Name((String) obj[30]);
-        batchReportDto.setPlantName((String) obj[44]);
+        batchReportDto.setGate1Target((BigDecimal) obj[31]);
+        batchReportDto.setGate2Target((BigDecimal) obj[32]);
+        batchReportDto.setGate3Target((BigDecimal) obj[33]);
+        batchReportDto.setGate4Target((BigDecimal) obj[34]);
+        batchReportDto.setGate5Target((BigDecimal) obj[35]);
+        batchReportDto.setCement1Target((BigDecimal) obj[36]);
+        batchReportDto.setCement2Target((BigDecimal) obj[37]);
+        batchReportDto.setFillerTarget((BigDecimal) obj[38]);
+        batchReportDto.setWater1Target((BigDecimal) obj[39]);
+        batchReportDto.setWater2Target((BigDecimal) obj[40]);
+        batchReportDto.setSilicaTarget((BigDecimal) obj[41]);
+        batchReportDto.setAdm1Target1((BigDecimal) obj[42]);
+        batchReportDto.setAdm1Target2((BigDecimal) obj[43]);
+        batchReportDto.setPlantName((String) obj[57]);
         return batchReportDto;
+    }
+
+
+    private BatchReportDto setCalculatedParams(BatchReportDto batchReportDto){
+        int batchSize = batchReportDto.getBatchDetailDtoList().size();
+        batchReportDto.setFillNameNX(batchReportDto.getFillerTarget().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setSilicaNameNX(batchReportDto.getSilicaTarget().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setAdmix2NameNX(batchReportDto.getAdm1Target2().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setAgg5NameNX(batchReportDto.getGate5Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setAgg4NameNX(batchReportDto.getGate4Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setAgg3NameNX(batchReportDto.getGate3Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setAgg2NameNX(batchReportDto.getGate2Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setAgg1NameNX(batchReportDto.getGate1Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setCement2NameNX(batchReportDto.getCement2Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setWater2NameNX(batchReportDto.getWater2Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setWater1NameNX(batchReportDto.getWater1Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setAdmix1NameNX(batchReportDto.getAdm1Target1().multiply(BigDecimal.valueOf(batchSize)));
+        batchReportDto.setCement1NameNX(batchReportDto.getCement1Target().multiply(BigDecimal.valueOf(batchSize)));
+        return batchReportDto;
+    }
+
+    private BatchReportDto setTotalWeightsData(BatchReportDto  batchReportDto){
+        batchReportDto.setSilicaActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getSilicaActual().longValue()).sum()));
+        batchReportDto.setCement1ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getCement1Actual().longValue()).sum()));
+        batchReportDto.setCement2ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getCement2Actual().longValue()).sum()));
+        batchReportDto.setFiller1ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getFiller1Actual().longValue()).sum()));
+        batchReportDto.setGate1ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getGate1Actual().longValue()).sum()));
+        batchReportDto.setGate2ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getGate2Actual().longValue()).sum()));
+        batchReportDto.setGate3ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getGate3Actual().longValue()).sum()));
+        batchReportDto.setGate4ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getGate4Actual().longValue()).sum()));
+        batchReportDto.setGate5ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getGate5Actual().longValue()).sum()));
+        batchReportDto.setWater1ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getWater1Actual().longValue()).sum()));
+        batchReportDto.setWater2ActualTotal(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getWater2Actual().longValue()).sum()));
+        batchReportDto.setAdm1Actual1Total(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getAdm1Actual1().longValue()).sum()));
+        batchReportDto.setAdm2Actual1Total(BigDecimal.valueOf(batchReportDto.getBatchDetailDtoList().stream().mapToLong(e->e.getAdm2Actual1().longValue()).sum()));
+        return batchReportDto;
+    }
+    private Map<String,Object> buildParamMap(BatchReportDto  batchReportDto){
+        Map<String,Object> map = new HashMap<>();
+        return map;
     }
 }

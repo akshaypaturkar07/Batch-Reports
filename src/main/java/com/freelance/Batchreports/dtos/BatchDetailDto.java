@@ -12,9 +12,9 @@ public class BatchDetailDto {
     private BigDecimal gate4Actual;
     private BigDecimal gate5Actual;
     private BigDecimal cement1Actual;
+    private BigDecimal cement2Actual;
     private BigDecimal filler1Actual;
     private BigDecimal water1Actual;
-    private BigDecimal water1Target;
     private BigDecimal water2Actual;
     private BigDecimal silicaActual;
     private BigDecimal adm1Actual1;

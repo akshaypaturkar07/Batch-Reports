@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -45,13 +46,18 @@ public class ReportsController {
     @ApiOperation(value = SwaggerConstants.GENERATE_PDF, nickname = SwaggerConstants.GENERATE_PDF_NICK)
     @ApiResponses(value = {@ApiResponse(code = 200, message = SwaggerConstants.GENERATE_PDF_200_OK)})
     @GetMapping("/generatePdfReport")
-    public ResponseEntity<?> generateReport(@RequestParam BigDecimal batchNum, @RequestParam BigDecimal id, @RequestParam BigDecimal contactId, @RequestParam BigDecimal plantId) {
-        ResponseEntity responseEntity;
-        String batchReportDto = null;
+    public ResponseEntity<?> generateReport(@RequestParam BigDecimal batchNum, @RequestParam BigDecimal id,
+                                            @RequestParam BigDecimal contactId, @RequestParam BigDecimal plantId,
+                                            HttpServletResponse response) {
+        ResponseEntity responseEntity = null;
+        byte[] batchReportDto = null;
         try {
             logger.info("Generating PDF report for batch number " + batchNum);
+            response.setContentType("application/pdf");
             batchReportDto = reportService.generateReports(batchNum, id,contactId,plantId);
-            responseEntity = new ResponseEntity<>(batchReportDto, HttpStatus.OK);
+            if(batchReportDto !=null && batchReportDto.length > 0){
+                responseEntity = new ResponseEntity<>(batchReportDto, HttpStatus.OK);    
+            }
         } catch (Exception e) {
             logger.error("Exception occurred while generating PDF reports {}" + e);
             responseEntity = new ResponseEntity<>(batchReportDto, HttpStatus.INTERNAL_SERVER_ERROR);

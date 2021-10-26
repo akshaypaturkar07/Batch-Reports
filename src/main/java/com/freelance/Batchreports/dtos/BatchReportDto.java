@@ -3,12 +3,11 @@ package com.freelance.Batchreports.dtos;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.util.List;
 
 @Data
 public class BatchReportDto {
-    private Date batchDate;
+    private String batchDate;
     private String batchStartTime;
     private String batchEndTime;
     private BigDecimal batchNo;
@@ -39,6 +38,45 @@ public class BatchReportDto {
     private String silicaName;
     private String admix1Name;
     private String admix2Name;
+    private BigDecimal gate1Target;
+    private BigDecimal gate2Target;
+    private BigDecimal gate3Target;
+    private BigDecimal gate4Target;
+    private BigDecimal gate5Target;
+    private BigDecimal cement1Target;
+    private BigDecimal cement2Target;
+    private BigDecimal fillerTarget;
+    private BigDecimal water1Target;
+    private BigDecimal water2Target;
+    private BigDecimal silicaTarget;
+    private BigDecimal adm1Target1;
+    private BigDecimal adm1Target2;
     private String plantName;
+    private BigDecimal agg1NameNX;
+    private BigDecimal agg2NameNX;
+    private BigDecimal agg3NameNX;
+    private BigDecimal agg4NameNX;
+    private BigDecimal agg5NameNX;
+    private BigDecimal cement1NameNX;
+    private BigDecimal cement2NameNX;
+    private BigDecimal fillNameNX;
+    private BigDecimal water1NameNX;
+    private BigDecimal water2NameNX;
+    private BigDecimal silicaNameNX;
+    private BigDecimal admix1NameNX;
+    private BigDecimal admix2NameNX;
+    private BigDecimal gate1ActualTotal;
+    private BigDecimal gate2ActualTotal;
+    private BigDecimal gate3ActualTotal;
+    private BigDecimal gate4ActualTotal;
+    private BigDecimal gate5ActualTotal;
+    private BigDecimal cement1ActualTotal;
+    private BigDecimal cement2ActualTotal;
+    private BigDecimal filler1ActualTotal;
+    private BigDecimal water1ActualTotal;
+    private BigDecimal water2ActualTotal;
+    private BigDecimal silicaActualTotal;
+    private BigDecimal adm1Actual1Total;
+    private BigDecimal adm2Actual1Total;
     private List<BatchDetailDto> batchDetailDtoList;
 }
