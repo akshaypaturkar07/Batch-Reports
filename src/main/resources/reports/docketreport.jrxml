@@ -1,57 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="docketreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="871055d0-3d99-48e0-9e27-9f074294c9dc">
-    <field name="batchSize" class="java.math.BigDecimal"/>
-    <field name="orderedQuantity" class="java.math.BigDecimal"/>
-    <field name="withthisload" class="java.math.BigDecimal"/>
-    <field name="truckNumber" class="java.lang.String"/>
-    <field name="truckDriver" class="java.lang.String"/>
-    <field name="site" class="java.lang.String"/>
-    <field name="recipeCode" class="java.lang.String"/>
-    <field name="recipeName" class="java.lang.String"/>
-    <field name="prodQuantity" class="java.lang.String"/>
-    <field name="planSerialNo" class="java.lang.String"/>
-    <field name="plantName" class="java.lang.String"/>
-    <field name="orderNo" class="java.lang.String"/>
-    <field name="mixerQuantity" class="java.math.BigDecimal"/>
-    <field name="manualQuantity" class="java.lang.String"/>
-    <field name="customer" class="java.lang.String"/>
-    <field name="batcherName" class="java.lang.String"/>
-    <field name="batchStartTime" class="java.lang.String"/>
-    <field name="batchEndTime" class="java.lang.String"/>
-    <field name="batchDate" class="java.lang.String"/>
-    <field name="batchNo" class="java.math.BigDecimal"/>
-    <field name="agg1Name" class="java.lang.String"/>
-    <field name="agg2Name" class="java.lang.String"/>
-    <field name="agg3Name" class="java.lang.String"/>
-    <field name="agg4Name" class="java.lang.String"/>
-    <field name="agg5Name" class="java.lang.String"/>
-    <field name="cement1Name" class="java.lang.String"/>
-    <field name="cement2Name" class="java.lang.String"/>
-    <field name="fillName" class="java.lang.String"/>
-    <field name="water1Name" class="java.lang.String"/>
-    <field name="water2Name" class="java.lang.String"/>
-    <field name="silicaName" class="java.lang.String"/>
-    <field name="admix1Name" class="java.lang.String"/>
-    <field name="admix2Name" class="java.lang.String"/>
-    <field name="gate1Target" class="java.math.BigDecimal"/>
-    <field name="gate2Target" class="java.math.BigDecimal"/>
-    <field name="gate3Target" class="java.math.BigDecimal"/>
-    <field name="gate4Target" class="java.math.BigDecimal"/>
-    <field name="gate5Target" class="java.math.BigDecimal"/>
-    <field name="cement1Target" class="java.math.BigDecimal"/>
-    <field name="cement2Target" class="java.math.BigDecimal"/>
-    <field name="fillerTarget" class="java.math.BigDecimal"/>
-    <field name="water1Target" class="java.math.BigDecimal"/>
-    <field name="water2Target" class="java.math.BigDecimal"/>
-    <field name="silicaTarget" class="java.math.BigDecimal"/>
-    <field name="adm1Target1" class="java.math.BigDecimal"/>
-    <field name="adm1Target2" class="java.math.BigDecimal"/>
+    <parameter name="batchSize" class="java.math.BigDecimal"/>
+    <parameter name="orderedQuantity" class="java.math.BigDecimal"/>
+    <parameter name="withthisload" class="java.math.BigDecimal"/>
+    <parameter name="truckNumber" class="java.lang.String"/>
+    <parameter name="truckDriver" class="java.lang.String"/>
+    <parameter name="site" class="java.lang.String"/>
+    <parameter name="recipeCode" class="java.lang.String"/>
+    <parameter name="recipeName" class="java.lang.String"/>
+    <parameter name="prodQuantity" class="java.math.BigDecimal"/>
+    <parameter name="planSerialNo" class="java.lang.String"/>
+    <parameter name="plantName" class="java.lang.String"/>
+    <parameter name="orderNo" class="java.lang.String"/>
+    <parameter name="mixerQuantity" class="java.math.BigDecimal"/>
+    <parameter name="manualQuantity" class="java.math.BigDecimal"/>
+    <parameter name="customer" class="java.lang.String"/>
+    <parameter name="batcherName" class="java.lang.String"/>
+    <parameter name="batchStartTime" class="java.lang.String"/>
+    <parameter name="batchEndTime" class="java.lang.String"/>
+    <parameter name="batchDate" class="java.lang.String"/>
+    <parameter name="batchNo" class="java.math.BigDecimal"/>
+    <parameter name="agg1Name" class="java.lang.String"/>
+    <parameter name="agg2Name" class="java.lang.String"/>
+    <parameter name="agg3Name" class="java.lang.String"/>
+    <parameter name="agg4Name" class="java.lang.String"/>
+    <parameter name="agg5Name" class="java.lang.String"/>
+    <parameter name="cement1Name" class="java.lang.String"/>
+    <parameter name="cement2Name" class="java.lang.String"/>
+    <parameter name="fillName" class="java.lang.String"/>
+    <parameter name="water1Name" class="java.lang.String"/>
+    <parameter name="water2Name" class="java.lang.String"/>
+    <parameter name="silicaName" class="java.lang.String"/>
+    <parameter name="admix1Name" class="java.lang.String"/>
+    <parameter name="admix2Name" class="java.lang.String"/>
+    <parameter name="gate1Target" class="java.math.BigDecimal"/>
+    <parameter name="gate2Target" class="java.math.BigDecimal"/>
+    <parameter name="gate3Target" class="java.math.BigDecimal"/>
+    <parameter name="gate4Target" class="java.math.BigDecimal"/>
+    <parameter name="gate5Target" class="java.math.BigDecimal"/>
+    <parameter name="cement1Target" class="java.math.BigDecimal"/>
+    <parameter name="cement2Target" class="java.math.BigDecimal"/>
+    <parameter name="fillerTarget" class="java.math.BigDecimal"/>
+    <parameter name="water1Target" class="java.math.BigDecimal"/>
+    <parameter name="water2Target" class="java.math.BigDecimal"/>
+    <parameter name="silicaTarget" class="java.math.BigDecimal"/>
+    <parameter name="adm1Target1" class="java.math.BigDecimal"/>
+    <parameter name="adm1Target2" class="java.math.BigDecimal"/>
     <background>
         <band splitType="Stretch"/>
     </background>
     <title>
         <band height="79" splitType="Stretch">
+            <property name="com.jaspersoft.studio.layout"/>
             <staticText>
                 <reportElement x="180" y="10" width="221" height="41" uuid="60b38ac0-bd3c-432e-bf98-d67ca24d72a0"/>
                 <textElement textAlignment="Center">
@@ -85,6 +86,7 @@
     </pageHeader>
     <detail>
         <band height="452" splitType="Stretch">
+            <property name="com.jaspersoft.studio.layout"/>
             <staticText>
                 <reportElement x="1" y="126" width="188" height="31" uuid="24f4acf9-8bdf-4861-85ef-f3ee50386b23"/>
                 <textElement>
@@ -357,117 +359,294 @@
             </staticText>
             <textField>
                 <reportElement x="202" y="11" width="78" height="19" uuid="44287afc-9a3e-4d36-818f-000a6c73e8ac"/>
-                <textFieldExpression><![CDATA[$F{batchDate}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{batchDate}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="201" y="44" width="81" height="20" uuid="a748b2f8-072c-46d3-8ae8-f6516251aa68"/>
-                <textFieldExpression><![CDATA[$F{batchStartTime}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{batchStartTime}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="200" y="80" width="81" height="21" uuid="eded0445-1ecf-41a0-ba0d-df6bbaf1369e"/>
-                <textFieldExpression><![CDATA[$F{batchEndTime}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{batchEndTime}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="520" y="11" width="41" height="21" uuid="2019655d-d4aa-4281-9d86-0535560dd3c6"/>
-                <textFieldExpression><![CDATA[$F{planSerialNo}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{planSerialNo}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="240" y="130" width="61" height="21" uuid="fcbebfb6-402f-4cd9-8b3c-97faba81e1e5"/>
-                <textFieldExpression><![CDATA[$F{batchNo}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{batchNo}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="240" y="162" width="61" height="24" uuid="976fd0a4-9068-4ffe-b30e-4f32b867990a"/>
-                <textFieldExpression><![CDATA[$F{customer}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{customer}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="240" y="200" width="61" height="21" uuid="52ed83e5-d34c-435a-ac6a-8a230c6f7b50"/>
-                <textFieldExpression><![CDATA[$F{site}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{site}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="240" y="232" width="51" height="20" uuid="dc694d34-a89f-4d80-a416-ca254ced4c61"/>
-                <textFieldExpression><![CDATA[$F{recipeCode}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{recipeCode}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="240" y="266" width="51" height="22" uuid="715f562b-e705-4231-99b9-0b7d745240c5"/>
-                <textFieldExpression><![CDATA[$F{recipeName}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{recipeName}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="240" y="298" width="61" height="21" uuid="1d7c6928-38af-49b6-82f6-ac7b4c8bde31"/>
-                <textFieldExpression><![CDATA[$F{truckNumber}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{truckNumber}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="240" y="339" width="61" height="20" uuid="a1001bbb-4c76-411f-aeb6-81af4a8317bc"/>
-                <textFieldExpression><![CDATA[$F{truckDriver}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{truckDriver}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="240" y="370" width="61" height="21" uuid="69c2c228-b0f0-4c72-81f5-d78e431185c7"/>
-                <textFieldExpression><![CDATA[$F{orderNo}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{orderNo}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="240" y="407" width="61" height="21" uuid="7b67dbdf-3543-4a90-aa1a-cd68348c84a3"/>
-                <textFieldExpression><![CDATA[$F{batcherName}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{batcherName}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="490" y="133" width="40" height="21" uuid="be2692d2-ae99-4933-bee5-92d8e2587e86"/>
-                <textFieldExpression><![CDATA[$F{orderedQuantity}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{orderedQuantity}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="490" y="165" width="41" height="22" uuid="161e3f1d-2a2f-4e56-a4d4-d5381c77009d"/>
-                <textFieldExpression><![CDATA[$F{prodQuantity}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{prodQuantity}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="490" y="211" width="41" height="21" uuid="194cae4e-5f73-4863-9a68-87fcac79ecbc"/>
-                <textFieldExpression><![CDATA[$F{manualQuantity}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{manualQuantity}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="490" y="253" width="41" height="20" uuid="662724d8-9054-48fe-af91-259d8738af42"/>
-                <textFieldExpression><![CDATA[$F{withthisload}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{withthisload}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="490" y="293" width="40" height="21" uuid="662cd174-dda7-470d-b224-8783ef0767a3"/>
-                <textFieldExpression><![CDATA[$F{mixerQuantity}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{mixerQuantity}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="490" y="333" width="41" height="21" uuid="2361f06f-e8e1-4f50-87b6-4676e70b73ff"/>
-                <textFieldExpression><![CDATA[$F{batchSize}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{batchSize}]]></textFieldExpression>
             </textField>
         </band>
         <band height="741">
             <staticText>
-                <reportElement x="1" y="13" width="87" height="28" uuid="17e607bc-2586-4218-9d48-a9dfb42e6b8f"/>
+                <reportElement x="45" y="13" width="88" height="28" uuid="17e607bc-2586-4218-9d48-a9dfb42e6b8f"/>
                 <textElement>
                     <font size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Aggregate]]></text>
             </staticText>
             <staticText>
-                <reportElement x="123" y="13" width="91" height="29" uuid="535e453c-43c6-4cb2-8df3-5cc807acc314"/>
+                <reportElement x="207" y="13" width="66" height="29" uuid="535e453c-43c6-4cb2-8df3-5cc807acc314"/>
                 <textElement>
                     <font size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Cement]]></text>
             </staticText>
             <staticText>
-                <reportElement x="376" y="14" width="91" height="29" uuid="25f8fccf-de9a-496a-99f8-d028b25b091b"/>
+                <reportElement x="393" y="13" width="53" height="29" uuid="25f8fccf-de9a-496a-99f8-d028b25b091b"/>
                 <textElement>
                     <font size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Silica]]></text>
             </staticText>
             <staticText>
-                <reportElement x="255" y="12" width="91" height="29" uuid="e10a2d1f-8973-4637-90a3-0e96691ee44c"/>
+                <reportElement x="316" y="12" width="54" height="29" uuid="e10a2d1f-8973-4637-90a3-0e96691ee44c"/>
                 <textElement>
                     <font size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Water]]></text>
             </staticText>
             <staticText>
-                <reportElement x="481" y="14" width="91" height="29" uuid="2c85d352-7764-4165-8fc3-b87b56cb4ff0"/>
+                <reportElement x="460" y="13" width="76" height="29" uuid="2c85d352-7764-4165-8fc3-b87b56cb4ff0"/>
                 <textElement>
                     <font size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Admixture]]></text>
             </staticText>
+            <textField>
+                <reportElement x="4" y="48" width="30" height="21" uuid="4b3cb14e-adab-4fd5-8d4c-068038b256d6">
+                    <property name="com.jaspersoft.studio.unit.width" value="px"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{agg1Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="47" y="48" width="30" height="23" uuid="19a0979b-58a3-48e9-a547-53b278de9926">
+                    <property name="com.jaspersoft.studio.unit.width" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{agg2Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="90" y="48" width="21" height="21" uuid="d7131eb8-36c7-41a9-84c0-339f106db707"/>
+                <textFieldExpression><![CDATA[$P{agg3Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="120" y="48" width="21" height="21" uuid="f911c0e7-cb7b-4eb9-9771-99222d1fd0cd"/>
+                <textFieldExpression><![CDATA[$P{agg4Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="150" y="48" width="31" height="21" uuid="19917598-2434-474d-9a04-6735a4a34a81"/>
+                <textFieldExpression><![CDATA[$P{agg5Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="191" y="48" width="21" height="21" uuid="ff9d2d28-8c3c-4658-bfb2-2522e67bdca4"/>
+                <textFieldExpression><![CDATA[$P{cement1Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="221" y="50" width="31" height="19" uuid="90bcde92-15f9-4676-ba8d-ba7725be2cc8"/>
+                <textFieldExpression><![CDATA[$P{cement2Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="261" y="50" width="31" height="19" uuid="738ee376-bb7f-4291-80ab-1f6d10deae35"/>
+                <textFieldExpression><![CDATA[$P{fillName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="307" y="50" width="31" height="21" uuid="88d684d4-40b1-49d6-9dcb-491e9dfc86f4"/>
+                <textFieldExpression><![CDATA[$P{water1Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="352" y="50" width="31" height="21" uuid="d40c8218-04bf-4b7c-8e3b-e1dbe410f2c4"/>
+                <textFieldExpression><![CDATA[$P{water2Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="405" y="50" width="31" height="21" uuid="b6358d9b-298f-4a69-8993-506f2f5e34f6"/>
+                <textFieldExpression><![CDATA[$P{silicaName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="460" y="50" width="31" height="21" uuid="05cb632b-0834-4a08-8bf1-a00126c1d76f"/>
+                <textFieldExpression><![CDATA[$P{admix1Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="500" y="50" width="41" height="21" uuid="1b09e035-d605-497e-8a11-5e50f222ee59"/>
+                <textFieldExpression><![CDATA[$P{admix2Name}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="80" width="261" height="21" uuid="d82b1a0f-142c-4deb-8a52-9f56f8711f80"/>
+                <text><![CDATA[Targets based on batchsize in
+Kgs]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="108" width="20" height="21" uuid="5609fd96-dbdb-4de0-9c11-0e607386675c"/>
+                <text><![CDATA[Kgs]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="25" y="108" width="21" height="21" uuid="12f6009d-6352-4bdf-a6bc-456db73e981b"/>
+                <textFieldExpression><![CDATA[$P{gate1Target}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="53" y="108" width="24" height="21" uuid="7b799d79-f8f9-4ca8-98b6-b7f11e357b18"/>
+                <textFieldExpression><![CDATA[$P{gate2Target}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="85" y="108" width="31" height="21" uuid="600d9b94-2e16-4498-bdc4-91cf0f1465bb"/>
+                <textFieldExpression><![CDATA[$P{gate3Target}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="122" y="108" width="28" height="23" uuid="f252a5a7-be30-49d5-b024-91988211c3e8"/>
+                <textFieldExpression><![CDATA[$P{gate4Target}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="154" y="108" width="29" height="23" uuid="43346942-6ff7-44b3-a8ad-23e0fd4a5781"/>
+                <textFieldExpression><![CDATA[$P{gate5Target}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="190" y="108" width="21" height="23" uuid="83105123-ee0b-47ee-8131-9c8a31da9b67"/>
+                <textFieldExpression><![CDATA[$P{cement1Target}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="220" y="110" width="31" height="21" uuid="dd39fdf0-decc-46d8-9fb3-9d0c08119f80"/>
+                <textFieldExpression><![CDATA[$P{cement2Target}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="108" width="31" height="23" uuid="8ae06612-df92-4d72-939b-4cfc48fc085b"/>
+                <textFieldExpression><![CDATA[$P{fillerTarget}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="310" y="110" width="31" height="21" uuid="ca26aed9-a787-48b9-b155-80e873a98e66"/>
+                <textFieldExpression><![CDATA[$P{water1Target}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="352" y="110" width="29" height="21" uuid="47cee9e7-d471-4c5c-9711-242624a6ffaa"/>
+                <textFieldExpression><![CDATA[$P{water2Target}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="410" y="110" width="31" height="21" uuid="279f61c3-ec89-4dcf-884e-f05db48c705d"/>
+                <textFieldExpression><![CDATA[$P{silicaTarget}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="460" y="110" width="31" height="21" uuid="f33b1463-7bf5-4ae7-9cb1-2adc2bb6b985"/>
+                <textFieldExpression><![CDATA[$P{adm1Target1}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="500" y="110" width="41" height="21" uuid="83647e10-90b9-4235-abcc-33c8770d5e61"/>
+                <textFieldExpression><![CDATA[$P{adm1Target2}]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement x="0" y="140" width="557" height="1" uuid="88bc8797-cee3-4af6-bfe6-69c8cb710824"/>
+            </line>
+            <staticText>
+                <reportElement x="10" y="150" width="131" height="21" uuid="4d4c5e5b-327c-4be7-96b7-3c098674c2d9"/>
+                <text><![CDATA[Actual in Kgs.]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="4" y="180" width="31" height="21" uuid="e8c0f791-ecf8-429a-89db-11459bf12d0e"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="44" y="180" width="31" height="21" uuid="d1b31cf7-22c7-4e3a-b74c-f29986e0e1cc"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="84" y="180" width="30" height="21" uuid="93bacd77-da8a-44f2-9156-7dd8c9e0a08b"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="124" y="180" width="31" height="21" uuid="3fdac592-8de1-4f75-96d4-836851e16298"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="160" y="180" width="31" height="21" uuid="b75eba9e-a81e-449c-b3d5-ca9883136caa"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="200" y="178" width="31" height="21" uuid="29000c22-ba64-4f57-961f-86faa9cff21c"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="240" y="178" width="31" height="21" uuid="bef1826a-2dff-48d1-8c7c-0cfbf84184af"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="280" y="178" width="30" height="21" uuid="8cf072a6-8095-4f18-9d2d-3f1341902fc5"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="320" y="178" width="31" height="21" uuid="e7344c4d-721a-4ccc-9a35-d61fcaf1424a"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="360" y="178" width="31" height="23" uuid="18be9116-18bf-4962-9ef2-7bf41cae7a54"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="410" y="178" width="31" height="23" uuid="7abda6f4-950c-46d4-8c1b-7271c863df02"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="460" y="180" width="31" height="21" uuid="a5766371-75e2-41d0-adab-11db14d03fc2"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="500" y="180" width="31" height="21" uuid="60fec9d2-6247-442c-8aff-0da7a74fefc7"/>
+                <textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+            </textField>
         </band>
     </detail>
 </jasperReport>

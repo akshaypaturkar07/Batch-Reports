@@ -56,8 +56,9 @@ public class ReportService {
             BatchReportDto batchReportDto = formBatchReportsData(reportData);
             File file = ResourceUtils.getFile("classpath:reports/docketreport.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(batchReportDto.getBatchDetailDtoList());
+            JRDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(batchReportDto.getBatchDetailDtoList());
             Map<String, Object> parameters = buildParamMap(batchReportDto);
+            parameters.put(FieldConstants.BATCH_DETAIL_LIST,beanCollectionDataSource);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
             JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
         } catch (Exception e) {
@@ -204,7 +205,7 @@ public class ReportService {
         map.put(FieldConstants.PLANT_NAME,batchReportDto.getPlantName());
         map.put(FieldConstants.ORDER_NO,batchReportDto.getOrderNo());
         map.put(FieldConstants.MIXER_QUANTITY,batchReportDto.getMixerCapacity());
-        map.put(FieldConstants.MANUAL_QUANTITY,null);
+        map.put(FieldConstants.MANUAL_QUANTITY,BigDecimal.valueOf(0));
         map.put(FieldConstants.CUSTOMER,batchReportDto.getCustVendorName());
         map.put(FieldConstants.BATCHER_NAME,batchReportDto.getBatcherName());
         map.put(FieldConstants.BATCH_START_TIME,batchReportDto.getBatchStartTime());
@@ -278,8 +279,8 @@ public class ReportService {
         map.put(FieldConstants.WATER1NAMEX,batchReportDto.getWater1NameNX());
         map.put(FieldConstants.WATER2NAMEX,batchReportDto.getWater2NameNX());
         map.put(FieldConstants.SILICANAMEX,batchReportDto.getSilicaNameNX());
-        map.put(FieldConstants.ADMIX1_NAME,batchReportDto.getAdmix1NameNX());
-        map.put(FieldConstants.ADMIX2_NAME,batchReportDto.getAdmix2NameNX());
+        map.put(FieldConstants.ADMX1NAMEX,batchReportDto.getAdmix1NameNX());
+        map.put(FieldConstants.ADMX2NAMEX,batchReportDto.getAdmix2NameNX());
 
         return map;
     }

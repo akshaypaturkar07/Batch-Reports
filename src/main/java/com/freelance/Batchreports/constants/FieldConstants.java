@@ -77,4 +77,6 @@ public class FieldConstants {
     public static final String SILICANAMEX = "silicaNameNX";
     public static final String ADMX1NAMEX = "admix1NameNX";
     public static final String ADMX2NAMEX = "admix2NameNX";
+
+    public static final String BATCH_DETAIL_LIST = "batchdetails";
 }
