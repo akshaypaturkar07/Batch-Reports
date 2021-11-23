@@ -175,6 +175,7 @@ public class ReportService {
         map.put(FieldConstants.BATCH_END_TIME,batchReportDto.getBatchEndTime());
         map.put(FieldConstants.BATCH_DATE,batchReportDto.getBatchDate());
         map.put(FieldConstants.BATCH_NO,batchReportDto.getBatchNo());
+
         map.put(FieldConstants.AGG1_NAME,batchReportDto.getAgg1Name());
         map.put(FieldConstants.AGG2_NAME,batchReportDto.getAgg2Name());
         map.put(FieldConstants.AGG3_NAME,batchReportDto.getAgg3Name());
@@ -188,20 +189,6 @@ public class ReportService {
         map.put(FieldConstants.SILICA_NAME,batchReportDto.getSilicaName());
         map.put(FieldConstants.ADMIX1_NAME,batchReportDto.getAdmix1Name());
         map.put(FieldConstants.ADMIX2_NAME,batchReportDto.getAdmix2Name());
-
-        map.put(FieldConstants.GATE1_TARGET,batchReportDto.getGate1Target());
-        map.put(FieldConstants.GATE2_TARGET,batchReportDto.getGate2Target());
-        map.put(FieldConstants.GATE3_TARGET,batchReportDto.getGate3Target());
-        map.put(FieldConstants.GATE4_TARGET,batchReportDto.getGate4Target());
-        map.put(FieldConstants.GATE5_TARGET,batchReportDto.getGate5Target());
-        map.put(FieldConstants.CEMENT1_TARGET,batchReportDto.getCement1Target());
-        map.put(FieldConstants.CEMENT2_TARGET,batchReportDto.getCement2Target());
-        map.put(FieldConstants.FILLER_TARGET,batchReportDto.getFillerTarget());
-        map.put(FieldConstants.WATER1_TARGET,batchReportDto.getWater1Target());
-        map.put(FieldConstants.WATER2_TARGET,batchReportDto.getWater2Target());
-        map.put(FieldConstants.SILICA_TARGET,batchReportDto.getSilicaTarget());
-        map.put(FieldConstants.ADM1_TARGET1,batchReportDto.getAdm1Target1());
-        map.put(FieldConstants.ADM1_TARGET2,batchReportDto.getAdm1Target2());
 
         map.put(FieldConstants.GATE1_TARGET,batchReportDto.getGate1Target());
         map.put(FieldConstants.GATE2_TARGET,batchReportDto.getGate2Target());
