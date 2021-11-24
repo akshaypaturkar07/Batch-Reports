@@ -58,8 +58,7 @@ public class ReportService {
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
             JRDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(batchReportDto.getBatchDetailDtoList());
             Map<String, Object> parameters = buildParamMap(batchReportDto);
-            parameters.put(FieldConstants.BATCH_DETAIL_LIST,beanCollectionDataSource);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanCollectionDataSource);
             JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
         } catch (Exception e) {
             logger.error("Exception occurred while processing report {}"+e);
@@ -80,6 +79,8 @@ public class ReportService {
             BatchDetailDto batchDetailDto = formBatchDetails(object);
             batchDetailDtoList.add(batchDetailDto);
         });
+        BatchReportDto finalBatchReportDto = batchReportDto;
+        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto,e,batchDetailDtoList.size()));
         batchReportDto.setBatchDetailDtoList(batchDetailDtoList);
         return batchReportDto;
     }
@@ -204,5 +205,22 @@ public class ReportService {
         map.put(FieldConstants.ADM1_TARGET1,batchReportDto.getAdm1Target1());
         map.put(FieldConstants.ADM1_TARGET2,batchReportDto.getAdm1Target2());
         return map;
+    }
+
+    private BatchDetailDto setCalculatedParams(BatchReportDto batchReportDto,BatchDetailDto batchDetailDto,int batchSize) {
+        batchDetailDto.setFillerTotalSet(batchReportDto.getFillerTarget().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setSilicaTotalSet(batchReportDto.getSilicaTarget().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setAdm2TotalSet(batchReportDto.getAdm1Target2().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setGate5TotalSet(batchReportDto.getGate5Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setGate4TotalSet(batchReportDto.getGate4Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setGate3TotalSet(batchReportDto.getGate3Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setGate2TotalSet(batchReportDto.getGate2Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setGate1TotalSet(batchReportDto.getGate1Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setCement2TotalSet(batchReportDto.getCement2Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setWater2TotalSet(batchReportDto.getWater2Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setWater1TotalSet(batchReportDto.getWater1Target().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setAdm1Actual1(batchReportDto.getAdm1Target1().multiply(BigDecimal.valueOf(batchSize)));
+        batchDetailDto.setCement1TotalSet(batchReportDto.getCement1Target().multiply(BigDecimal.valueOf(batchSize)));
+        return batchDetailDto;
     }
 }
