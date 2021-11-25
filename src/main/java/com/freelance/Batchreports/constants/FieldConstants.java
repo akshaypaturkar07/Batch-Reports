@@ -79,4 +79,5 @@ public class FieldConstants {
     public static final String ADMX2NAMEX = "admix2NameNX";
 
     public static final String BATCH_DETAIL_LIST = "batchdetails";
+    public static final String IMAGES = "images";
 }

@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -37,6 +38,8 @@ public class ReportService {
     private VendorRepository vendorRepository;
     @Autowired
     private PlantRepository plantRepository;
+    @Autowired
+    private ServletContext context;
 
     public List<TrnRmcBatch> getBatchData() {
         logger.info("Fetching batch data");
@@ -52,12 +55,14 @@ public class ReportService {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
             logger.info("Generating PDF report");
+            String realPath = ResourceUtils.getFile("classpath:reports").getAbsolutePath()+"/";
             Iterable<Object[]> reportData = batchRepository.getReportsData(batchNo, id, contactId, plantId);
             BatchReportDto batchReportDto = formBatchReportsData(reportData);
             File file = ResourceUtils.getFile("classpath:reports/docketreport.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
             JRDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(batchReportDto.getBatchDetailDtoList());
             Map<String, Object> parameters = buildParamMap(batchReportDto);
+            parameters.put(FieldConstants.IMAGES,realPath);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanCollectionDataSource);
             JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
         } catch (Exception e) {
