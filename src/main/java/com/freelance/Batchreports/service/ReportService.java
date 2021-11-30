@@ -85,7 +85,8 @@ public class ReportService {
             batchDetailDtoList.add(batchDetailDto);
         });
         BatchReportDto finalBatchReportDto = batchReportDto;
-        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto,e,batchDetailDtoList.size()));
+        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto,e));
+        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto,e,BigDecimal.valueOf(batchDetailDtoList.size())));
         batchReportDto.setBatchDetailDtoList(batchDetailDtoList);
         return batchReportDto;
     }
@@ -196,36 +197,55 @@ public class ReportService {
         map.put(FieldConstants.ADMIX1_NAME,batchReportDto.getAdmix1Name());
         map.put(FieldConstants.ADMIX2_NAME,batchReportDto.getAdmix2Name());
 
-        map.put(FieldConstants.GATE1_TARGET,batchReportDto.getGate1Target());
-        map.put(FieldConstants.GATE2_TARGET,batchReportDto.getGate2Target());
-        map.put(FieldConstants.GATE3_TARGET,batchReportDto.getGate3Target());
-        map.put(FieldConstants.GATE4_TARGET,batchReportDto.getGate4Target());
-        map.put(FieldConstants.GATE5_TARGET,batchReportDto.getGate5Target());
-        map.put(FieldConstants.CEMENT1_TARGET,batchReportDto.getCement1Target());
-        map.put(FieldConstants.CEMENT2_TARGET,batchReportDto.getCement2Target());
-        map.put(FieldConstants.FILLER_TARGET,batchReportDto.getFillerTarget());
-        map.put(FieldConstants.WATER1_TARGET,batchReportDto.getWater1Target());
-        map.put(FieldConstants.WATER2_TARGET,batchReportDto.getWater2Target());
-        map.put(FieldConstants.SILICA_TARGET,batchReportDto.getSilicaTarget());
-        map.put(FieldConstants.ADM1_TARGET1,batchReportDto.getAdm1Target1());
-        map.put(FieldConstants.ADM1_TARGET2,batchReportDto.getAdm1Target2());
+        map.put(FieldConstants.GATE1_TARGET,batchReportDto.getGate1());
+        map.put(FieldConstants.GATE2_TARGET,batchReportDto.getGate2());
+        map.put(FieldConstants.GATE3_TARGET,batchReportDto.getGate3());
+        map.put(FieldConstants.GATE4_TARGET,batchReportDto.getGate4());
+        map.put(FieldConstants.GATE5_TARGET,batchReportDto.getGate5());
+        map.put(FieldConstants.CEMENT1_TARGET,batchReportDto.getCement1());
+        map.put(FieldConstants.CEMENT2_TARGET,batchReportDto.getCement2());
+        map.put(FieldConstants.FILLER_TARGET,batchReportDto.getFiller());
+        map.put(FieldConstants.WATER1_TARGET,batchReportDto.getWater1());
+        map.put(FieldConstants.WATER2_TARGET,batchReportDto.getWater2());
+        map.put(FieldConstants.SILICA_TARGET,batchReportDto.getSilica());
+        map.put(FieldConstants.ADM1_TARGET1,batchReportDto.getAdm1());
+        map.put(FieldConstants.ADM1_TARGET2,batchReportDto.getAdm2());
         return map;
     }
 
-    private BatchDetailDto setCalculatedParams(BatchReportDto batchReportDto,BatchDetailDto batchDetailDto,int batchSize) {
-        batchDetailDto.setFillerTotalSet(batchReportDto.getFillerTarget().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setSilicaTotalSet(batchReportDto.getSilicaTarget().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setAdm2TotalSet(batchReportDto.getAdm1Target2().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setGate5TotalSet(batchReportDto.getGate5Target().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setGate4TotalSet(batchReportDto.getGate4Target().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setGate3TotalSet(batchReportDto.getGate3Target().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setGate2TotalSet(batchReportDto.getGate2Target().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setGate1TotalSet(batchReportDto.getGate1Target().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setCement2TotalSet(batchReportDto.getCement2Target().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setWater2TotalSet(batchReportDto.getWater2Target().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setWater1TotalSet(batchReportDto.getWater1Target().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setAdm1Actual1(batchReportDto.getAdm1Target1().multiply(BigDecimal.valueOf(batchSize)));
-        batchDetailDto.setCement1TotalSet(batchReportDto.getCement1Target().multiply(BigDecimal.valueOf(batchSize)));
+    private BatchDetailDto setCalculatedParams(BatchReportDto batchReportDto,BatchDetailDto batchDetailDto) {
+        batchDetailDto.setGate1TotalSet(batchReportDto.getGate1Target().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setGate2TotalSet(batchReportDto.getGate2Target().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setGate3TotalSet(batchReportDto.getGate3Target().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setGate4TotalSet(batchReportDto.getGate4Target().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setGate5TotalSet(batchReportDto.getGate5Target().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setCement1TotalSet(batchReportDto.getCement1Target().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setCement2TotalSet(batchReportDto.getCement2Target().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setFillerTotalSet(batchReportDto.getFillerTarget().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setWater1TotalSet(batchReportDto.getWater1Target().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setWater2TotalSet(batchReportDto.getWater2Target().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setSilicaTotalSet(batchReportDto.getSilicaTarget().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setAdm1TotalSet(batchReportDto.getAdm1Target1().multiply(batchReportDto.getProductionQty()));
+        batchDetailDto.setAdm2TotalSet(batchReportDto.getAdm1Target2().multiply(batchReportDto.getProductionQty()));
         return batchDetailDto;
     }
+
+    private BatchDetailDto setCalculatedParams(BatchReportDto batchReportDto, BatchDetailDto batchDetailDto, BigDecimal batchSize) {
+        batchReportDto.setGate1(batchReportDto.getGate1Target().multiply(batchSize));
+        batchReportDto.setGate2(batchReportDto.getGate2Target().multiply(batchSize));
+        batchReportDto.setGate3(batchReportDto.getGate3Target().multiply(batchSize));
+        batchReportDto.setGate4(batchReportDto.getGate4Target().multiply(batchSize));
+        batchReportDto.setGate5(batchReportDto.getGate5Target().multiply(batchSize));
+        batchReportDto.setCement1(batchReportDto.getCement1Target().multiply(batchSize));
+        batchReportDto.setCement2(batchReportDto.getCement2Target().multiply(batchSize));
+        batchReportDto.setFiller(batchReportDto.getFillerTarget().multiply(batchSize));
+        batchReportDto.setWater1(batchReportDto.getWater1Target().multiply(batchSize));
+        batchReportDto.setWater2(batchReportDto.getWater2Target().multiply(batchSize));
+        batchReportDto.setSilica(batchReportDto.getSilicaTarget().multiply(batchSize));
+        batchReportDto.setAdm1(batchReportDto.getAdm1Target1().multiply(batchSize));
+        batchReportDto.setAdm2(batchReportDto.getAdm1Target2().multiply(batchSize));
+        return batchDetailDto;
+    }
+
+
 }

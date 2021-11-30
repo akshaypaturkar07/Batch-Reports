@@ -38,6 +38,7 @@ public class BatchReportDto {
     private String silicaName;
     private String admix1Name;
     private String admix2Name;
+
     private BigDecimal gate1Target;
     private BigDecimal gate2Target;
     private BigDecimal gate3Target;
@@ -51,6 +52,20 @@ public class BatchReportDto {
     private BigDecimal silicaTarget;
     private BigDecimal adm1Target1;
     private BigDecimal adm1Target2;
+
+    private BigDecimal gate1;
+    private BigDecimal gate2;
+    private BigDecimal gate3;
+    private BigDecimal gate4;
+    private BigDecimal gate5;
+    private BigDecimal cement1;
+    private BigDecimal cement2;
+    private BigDecimal filler;
+    private BigDecimal water1;
+    private BigDecimal water2;
+    private BigDecimal silica;
+    private BigDecimal adm1;
+    private BigDecimal adm2;
 
     private String plantName;
     private List<BatchDetailDto> batchDetailDtoList;
