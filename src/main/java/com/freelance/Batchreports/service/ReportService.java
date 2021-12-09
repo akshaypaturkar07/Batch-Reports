@@ -11,6 +11,7 @@ import com.freelance.Batchreports.repositories.PlantRepository;
 import com.freelance.Batchreports.repositories.VendorRepository;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,18 +56,18 @@ public class ReportService {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
             logger.info("Generating PDF report");
-            String realPath = ResourceUtils.getFile("classpath:reports").getAbsolutePath()+"/";
+            String realPath = ResourceUtils.getFile("classpath:reports").getAbsolutePath() + "/";
             Iterable<Object[]> reportData = batchRepository.getReportsData(batchNo, id, contactId, plantId);
             BatchReportDto batchReportDto = formBatchReportsData(reportData);
             File file = ResourceUtils.getFile("classpath:reports/docketreport.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
             JRDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(batchReportDto.getBatchDetailDtoList());
             Map<String, Object> parameters = buildParamMap(batchReportDto);
-            parameters.put(FieldConstants.IMAGES,realPath);
+            parameters.put(FieldConstants.IMAGES, realPath);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanCollectionDataSource);
             JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
         } catch (Exception e) {
-            logger.error("Exception occurred while processing report {}"+e);
+            logger.error("Exception occurred while processing report {}" + e);
         }
         response.setContentType(MediaType.APPLICATION_PDF_VALUE);
         return byteArrayOutputStream.toByteArray();
@@ -85,8 +86,8 @@ public class ReportService {
             batchDetailDtoList.add(batchDetailDto);
         });
         BatchReportDto finalBatchReportDto = batchReportDto;
-        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto,e));
-        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto,e,BigDecimal.valueOf(batchDetailDtoList.size())));
+        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto, e));
+        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto, e, BigDecimal.valueOf(batchDetailDtoList.size())));
         batchReportDto.setBatchDetailDtoList(batchDetailDtoList);
         return batchReportDto;
     }
@@ -162,58 +163,58 @@ public class ReportService {
 
     private Map<String, Object> buildParamMap(BatchReportDto batchReportDto) {
         Map<String, Object> map = new HashMap<>();
-        map.put(FieldConstants.BATCH_SIZE,batchReportDto.getBatchSize());
-        map.put(FieldConstants.ORDERED_QUANTITY,batchReportDto.getOrderedQty());
-        map.put(FieldConstants.WithThisLoad,batchReportDto.getWiththisload());
-        map.put(FieldConstants.TRUCK_NUMBER,batchReportDto.getTruckNo());
-        map.put(FieldConstants.TRUCK_DRIVER,batchReportDto.getTruckDriver());
-        map.put(FieldConstants.SITE,batchReportDto.getSite());
-        map.put(FieldConstants.RECIPE_CODE,batchReportDto.getRecipeCode());
-        map.put(FieldConstants.RECIPE_NAME,batchReportDto.getRecipeName());
-        map.put(FieldConstants.PRODUCTION_QUANTITY,batchReportDto.getProductionQty());
-        map.put(FieldConstants.PLANT_SERIAL_NO,batchReportDto.getPlantRegNo());
-        map.put(FieldConstants.PLANT_NAME,batchReportDto.getPlantName());
-        map.put(FieldConstants.ORDER_NO,batchReportDto.getOrderNo());
-        map.put(FieldConstants.MIXER_QUANTITY,batchReportDto.getMixerCapacity());
-        map.put(FieldConstants.MANUAL_QUANTITY,BigDecimal.valueOf(0));
-        map.put(FieldConstants.CUSTOMER,batchReportDto.getCustVendorName());
-        map.put(FieldConstants.BATCHER_NAME,batchReportDto.getBatcherName());
-        map.put(FieldConstants.BATCH_START_TIME,batchReportDto.getBatchStartTime());
-        map.put(FieldConstants.BATCH_END_TIME,batchReportDto.getBatchEndTime());
-        map.put(FieldConstants.BATCH_DATE,batchReportDto.getBatchDate());
-        map.put(FieldConstants.BATCH_NO,batchReportDto.getBatchNo());
+        map.put(FieldConstants.BATCH_SIZE, batchReportDto.getBatchSize());
+        map.put(FieldConstants.ORDERED_QUANTITY, batchReportDto.getOrderedQty());
+        map.put(FieldConstants.WithThisLoad, batchReportDto.getWiththisload());
+        map.put(FieldConstants.TRUCK_NUMBER, batchReportDto.getTruckNo());
+        map.put(FieldConstants.TRUCK_DRIVER, batchReportDto.getTruckDriver());
+        map.put(FieldConstants.SITE, batchReportDto.getSite());
+        map.put(FieldConstants.RECIPE_CODE, batchReportDto.getRecipeCode());
+        map.put(FieldConstants.RECIPE_NAME, batchReportDto.getRecipeName());
+        map.put(FieldConstants.PRODUCTION_QUANTITY, batchReportDto.getProductionQty());
+        map.put(FieldConstants.PLANT_SERIAL_NO, batchReportDto.getPlantRegNo());
+        map.put(FieldConstants.PLANT_NAME, batchReportDto.getPlantName());
+        map.put(FieldConstants.ORDER_NO, StringUtils.isEmpty(batchReportDto.getOrderNo()) ? "NA" : batchReportDto.getOrderNo());
+        map.put(FieldConstants.MIXER_QUANTITY, batchReportDto.getMixerCapacity());
+        map.put(FieldConstants.MANUAL_QUANTITY, BigDecimal.valueOf(0));
+        map.put(FieldConstants.CUSTOMER, batchReportDto.getCustVendorName());
+        map.put(FieldConstants.BATCHER_NAME, batchReportDto.getBatcherName());
+        map.put(FieldConstants.BATCH_START_TIME, batchReportDto.getBatchStartTime());
+        map.put(FieldConstants.BATCH_END_TIME, batchReportDto.getBatchEndTime());
+        map.put(FieldConstants.BATCH_DATE, batchReportDto.getBatchDate());
+        map.put(FieldConstants.BATCH_NO, batchReportDto.getBatchNo());
 
-        map.put(FieldConstants.AGG1_NAME,batchReportDto.getAgg1Name());
-        map.put(FieldConstants.AGG2_NAME,batchReportDto.getAgg2Name());
-        map.put(FieldConstants.AGG3_NAME,batchReportDto.getAgg3Name());
-        map.put(FieldConstants.AGG4_NAME,batchReportDto.getAgg4Name());
-        map.put(FieldConstants.AGG5_NAME,batchReportDto.getAgg5Name());
-        map.put(FieldConstants.CEMENT1_NAME,batchReportDto.getCement1Name());
-        map.put(FieldConstants.CEMENT2_NAME,batchReportDto.getCement2Name());
-        map.put(FieldConstants.FILL_NAME,batchReportDto.getFillName());
-        map.put(FieldConstants.WATER1_NAME,batchReportDto.getWater1Name());
-        map.put(FieldConstants.WATER2_NAME,batchReportDto.getWater2Name());
-        map.put(FieldConstants.SILICA_NAME,batchReportDto.getSilicaName());
-        map.put(FieldConstants.ADMIX1_NAME,batchReportDto.getAdmix1Name());
-        map.put(FieldConstants.ADMIX2_NAME,batchReportDto.getAdmix2Name());
+        map.put(FieldConstants.AGG1_NAME, StringUtils.isEmpty(batchReportDto.getAgg1Name()) ? "-" : batchReportDto.getAgg1Name());
+        map.put(FieldConstants.AGG2_NAME, StringUtils.isEmpty(batchReportDto.getAgg2Name()) ? "-" : batchReportDto.getAgg2Name());
+        map.put(FieldConstants.AGG3_NAME, StringUtils.isEmpty(batchReportDto.getAgg3Name()) ? "-" : batchReportDto.getAgg3Name());
+        map.put(FieldConstants.AGG4_NAME, StringUtils.isEmpty(batchReportDto.getAgg4Name()) ? "-" : batchReportDto.getAgg4Name());
+        map.put(FieldConstants.AGG5_NAME, StringUtils.isEmpty(batchReportDto.getAgg5Name()) ? "-" : batchReportDto.getAgg5Name());
+        map.put(FieldConstants.CEMENT1_NAME, StringUtils.isEmpty(batchReportDto.getCement1Name()) ? "-" : batchReportDto.getCement1Name());
+        map.put(FieldConstants.CEMENT2_NAME, StringUtils.isEmpty(batchReportDto.getCement2Name()) ? "-" : batchReportDto.getCement2Name());
+        map.put(FieldConstants.FILL_NAME, StringUtils.isEmpty(batchReportDto.getFillName()) ? "-" : batchReportDto.getFillName());
+        map.put(FieldConstants.WATER1_NAME, StringUtils.isEmpty(batchReportDto.getWater1Name()) ? "-" : batchReportDto.getWater1Name());
+        map.put(FieldConstants.WATER2_NAME, StringUtils.isEmpty(batchReportDto.getWater2Name()) ? "-" : batchReportDto.getWater2Name());
+        map.put(FieldConstants.SILICA_NAME, StringUtils.isEmpty(batchReportDto.getSilicaName()) ? "-" : batchReportDto.getSilicaName());
+        map.put(FieldConstants.ADMIX1_NAME, StringUtils.isEmpty(batchReportDto.getAdmix1Name()) ? "-" : batchReportDto.getAdmix1Name());
+        map.put(FieldConstants.ADMIX2_NAME, StringUtils.isEmpty(batchReportDto.getAdmix2Name()) ? "-" : batchReportDto.getAdmix2Name());
 
-        map.put(FieldConstants.GATE1_TARGET,batchReportDto.getGate1());
-        map.put(FieldConstants.GATE2_TARGET,batchReportDto.getGate2());
-        map.put(FieldConstants.GATE3_TARGET,batchReportDto.getGate3());
-        map.put(FieldConstants.GATE4_TARGET,batchReportDto.getGate4());
-        map.put(FieldConstants.GATE5_TARGET,batchReportDto.getGate5());
-        map.put(FieldConstants.CEMENT1_TARGET,batchReportDto.getCement1());
-        map.put(FieldConstants.CEMENT2_TARGET,batchReportDto.getCement2());
-        map.put(FieldConstants.FILLER_TARGET,batchReportDto.getFiller());
-        map.put(FieldConstants.WATER1_TARGET,batchReportDto.getWater1());
-        map.put(FieldConstants.WATER2_TARGET,batchReportDto.getWater2());
-        map.put(FieldConstants.SILICA_TARGET,batchReportDto.getSilica());
-        map.put(FieldConstants.ADM1_TARGET1,batchReportDto.getAdm1());
-        map.put(FieldConstants.ADM1_TARGET2,batchReportDto.getAdm2());
+        map.put(FieldConstants.GATE1_TARGET, batchReportDto.getGate1());
+        map.put(FieldConstants.GATE2_TARGET, batchReportDto.getGate2());
+        map.put(FieldConstants.GATE3_TARGET, batchReportDto.getGate3());
+        map.put(FieldConstants.GATE4_TARGET, batchReportDto.getGate4());
+        map.put(FieldConstants.GATE5_TARGET, batchReportDto.getGate5());
+        map.put(FieldConstants.CEMENT1_TARGET, batchReportDto.getCement1());
+        map.put(FieldConstants.CEMENT2_TARGET, batchReportDto.getCement2());
+        map.put(FieldConstants.FILLER_TARGET, batchReportDto.getFiller());
+        map.put(FieldConstants.WATER1_TARGET, batchReportDto.getWater1());
+        map.put(FieldConstants.WATER2_TARGET, batchReportDto.getWater2());
+        map.put(FieldConstants.SILICA_TARGET, batchReportDto.getSilica());
+        map.put(FieldConstants.ADM1_TARGET1, batchReportDto.getAdm1());
+        map.put(FieldConstants.ADM1_TARGET2, batchReportDto.getAdm2());
         return map;
     }
 
-    private BatchDetailDto setCalculatedParams(BatchReportDto batchReportDto,BatchDetailDto batchDetailDto) {
+    private BatchDetailDto setCalculatedParams(BatchReportDto batchReportDto, BatchDetailDto batchDetailDto) {
         batchDetailDto.setGate1TotalSet(batchReportDto.getGate1Target().multiply(batchReportDto.getProductionQty()));
         batchDetailDto.setGate2TotalSet(batchReportDto.getGate2Target().multiply(batchReportDto.getProductionQty()));
         batchDetailDto.setGate3TotalSet(batchReportDto.getGate3Target().multiply(batchReportDto.getProductionQty()));

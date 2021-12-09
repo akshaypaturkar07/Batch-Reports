@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="docketreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="871055d0-3d99-48e0-9e27-9f074294c9dc">
 	<property name="ireport.zoom" value="1.2396694214876045"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="163"/>
 	<parameter name="batchSize" class="java.math.BigDecimal"/>
 	<parameter name="images" class="java.lang.String"/>
 	<parameter name="orderedQuantity" class="java.math.BigDecimal"/>
@@ -641,7 +641,7 @@
 				<text><![CDATA[Water]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="46" width="21" height="15" uuid="64dfaf61-004b-4eef-8456-7e7750d264cb"/>
+				<reportElement x="0" y="46" width="16" height="15" uuid="64dfaf61-004b-4eef-8456-7e7750d264cb"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -697,7 +697,7 @@
 			<textField>
 				<reportElement x="148" y="16" width="35" height="15" uuid="19917598-2434-474d-9a04-6735a4a34a81"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{agg5Name}]]></textFieldExpression>
 			</textField>
@@ -711,7 +711,7 @@
 			<textField>
 				<reportElement x="218" y="16" width="43" height="15" uuid="90bcde92-15f9-4676-ba8d-ba7725be2cc8"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{cement2Name}]]></textFieldExpression>
 			</textField>
@@ -758,7 +758,7 @@
 				<textFieldExpression><![CDATA[$P{admix2Name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="21" y="46" width="22" height="15" uuid="12f6009d-6352-4bdf-a6bc-456db73e981b"/>
+				<reportElement x="21" y="46" width="27" height="15" uuid="12f6009d-6352-4bdf-a6bc-456db73e981b"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -767,7 +767,7 @@
 			<textField>
 				<reportElement x="43" y="46" width="35" height="15" uuid="7b799d79-f8f9-4ca8-98b6-b7f11e357b18"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{gate2Target}]]></textFieldExpression>
 			</textField>
@@ -788,7 +788,7 @@
 			<textField>
 				<reportElement x="148" y="46" width="35" height="15" uuid="43346942-6ff7-44b3-a8ad-23e0fd4a5781"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{gate5Target}]]></textFieldExpression>
 			</textField>
@@ -802,14 +802,14 @@
 			<textField>
 				<reportElement x="218" y="46" width="43" height="15" uuid="dd39fdf0-decc-46d8-9fb3-9d0c08119f80"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{cement2Target}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="261" y="46" width="32" height="15" uuid="8ae06612-df92-4d72-939b-4cfc48fc085b"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{fillerTarget}]]></textFieldExpression>
 			</textField>
@@ -830,7 +830,7 @@
 			<textField>
 				<reportElement x="403" y="46" width="62" height="15" uuid="279f61c3-ec89-4dcf-884e-f05db48c705d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{silicaTarget}]]></textFieldExpression>
 			</textField>
@@ -857,7 +857,7 @@
 			<staticText>
 				<reportElement x="0" y="66" width="134" height="15" uuid="4d4c5e5b-327c-4be7-96b7-3c098674c2d9"/>
 				<textElement verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<text><![CDATA[Actual in Kgs.]]></text>
 			</staticText>
@@ -965,7 +965,7 @@
 			<staticText>
 				<reportElement x="0" y="3" width="134" height="21" uuid="181626ae-ad57-4ae3-a2c4-c26567a67f80"/>
 				<textElement verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<text><![CDATA[Total Set Weight in Kgs]]></text>
 			</staticText>
@@ -998,7 +998,7 @@
 			<textField>
 				<reportElement x="42" y="59" width="36" height="20" uuid="28c52f6d-dacd-4b12-9da8-1787ff339d17"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{gate2ActualSum}]]></textFieldExpression>
 			</textField>
@@ -1012,56 +1012,56 @@
 			<textField>
 				<reportElement x="113" y="59" width="35" height="20" uuid="db7ab5a0-9573-4f7c-b5e3-e2a2821a51ed"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{gate4ActualSum}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="148" y="59" width="35" height="20" uuid="b4f4e138-6406-4859-b302-84f593bf8eaa"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{gate5ActualSum}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="183" y="59" width="35" height="20" uuid="21e3920b-331f-411b-a884-a6897f150ba7"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{cement1ActualSum}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="218" y="59" width="43" height="20" uuid="0d77cd8e-636b-4e7c-b829-9ed01098ae1c"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{cement2ActualSum}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="261" y="59" width="32" height="20" uuid="1d62796c-b2d5-4378-8b75-0578c033b48d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{filler1ActualSum}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="293" y="59" width="53" height="20" uuid="6a303df7-6dcb-4c78-80cc-620546c44b5d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{water1ActualSum}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="346" y="59" width="57" height="20" uuid="12abfb52-e450-48fa-8bb4-04baf8457277"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{water2ActualSum}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="403" y="59" width="62" height="20" uuid="04f919f0-2dcb-48d0-82b6-1414ccd234e5"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{silicaActualSum}]]></textFieldExpression>
 			</textField>
@@ -1138,14 +1138,14 @@
 			<textField>
 				<reportElement x="346" y="24" width="57" height="20" uuid="3063f4f1-c0dd-4bb6-8c2d-01f59f19b14f"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{water2TotalSet}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="403" y="24" width="62" height="20" uuid="d0f15cc7-844f-4cf8-a2ee-a90c888f570d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" />
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{silicaTotalSet}]]></textFieldExpression>
 			</textField>
