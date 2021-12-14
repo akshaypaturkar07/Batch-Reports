@@ -19,6 +19,7 @@ public class BatchDetailDto {
     private BigDecimal silicaActual;
     private BigDecimal adm1Actual1;
     private BigDecimal adm2Actual1;
+    private BigDecimal water1correction;
 
 
 

@@ -13,7 +13,8 @@ public class ReportsQueryConstants {
             "b.silica_target,b.adm1_target1,b.adm2_target2," +
             "bd.gate1_actual,bd.gate2_actual,bd.gate3_actual,bd.gate4_actual," +
             "bd.gate5_actual, bd.cement1_actual,bd.cement2_actual,bd.filler1_actual,bd.water1_actual,bd.water2_actual," +
-            "bd.silica_actual,bd.adm1_actual1,bd.adm2_actual1,m.plant_name" +
+            "bd.silica_actual,bd.adm1_actual1,bd.adm2_actual1, " +
+            "bd.water1_correction,m.plant_name" +
             " from trn_rmc_batch b" +
             " inner join trn_rmc_batch_detail bd on b.batch_no =  bd.batch_no" +
             " inner join mst_plant m on m.int_id = b.int_id" +

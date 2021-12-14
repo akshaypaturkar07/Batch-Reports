@@ -107,6 +107,7 @@ public class ReportService {
         batchDetailDto.setSilicaActual((BigDecimal) object[54]);
         batchDetailDto.setAdm1Actual1((BigDecimal) object[55]);
         batchDetailDto.setAdm2Actual1((BigDecimal) object[56]);
+        batchDetailDto.setWater1correction((BigDecimal) object[57]);
         return batchDetailDto;
     }
 
@@ -157,7 +158,7 @@ public class ReportService {
         batchReportDto.setSilicaTarget((BigDecimal) obj[41]);
         batchReportDto.setAdm1Target1((BigDecimal) obj[42]);
         batchReportDto.setAdm1Target2((BigDecimal) obj[43]);
-        batchReportDto.setPlantName((String) obj[57]);
+        batchReportDto.setPlantName((String) obj[58]);
         return batchReportDto;
     }
 
