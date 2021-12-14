@@ -86,8 +86,8 @@ public class ReportService {
             batchDetailDtoList.add(batchDetailDto);
         });
         BatchReportDto finalBatchReportDto = batchReportDto;
-        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto, e));
-        batchDetailDtoList.forEach(e -> setCalculatedParams(finalBatchReportDto, e, BigDecimal.valueOf(batchDetailDtoList.size())));
+        batchDetailDtoList.forEach(e -> setCalculatedParamsByProdQuantity(finalBatchReportDto, e));
+        batchDetailDtoList.forEach(e -> setCalculatedParamsByBatchSize(finalBatchReportDto, e));
         batchReportDto.setBatchDetailDtoList(batchDetailDtoList);
         return batchReportDto;
     }
@@ -214,7 +214,7 @@ public class ReportService {
         return map;
     }
 
-    private BatchDetailDto setCalculatedParams(BatchReportDto batchReportDto, BatchDetailDto batchDetailDto) {
+    private BatchDetailDto setCalculatedParamsByProdQuantity(BatchReportDto batchReportDto, BatchDetailDto batchDetailDto) {
         batchDetailDto.setGate1TotalSet(batchReportDto.getGate1Target().multiply(batchReportDto.getProductionQty()));
         batchDetailDto.setGate2TotalSet(batchReportDto.getGate2Target().multiply(batchReportDto.getProductionQty()));
         batchDetailDto.setGate3TotalSet(batchReportDto.getGate3Target().multiply(batchReportDto.getProductionQty()));
@@ -231,20 +231,20 @@ public class ReportService {
         return batchDetailDto;
     }
 
-    private BatchDetailDto setCalculatedParams(BatchReportDto batchReportDto, BatchDetailDto batchDetailDto, BigDecimal batchSize) {
-        batchReportDto.setGate1(batchReportDto.getGate1Target().multiply(batchSize));
-        batchReportDto.setGate2(batchReportDto.getGate2Target().multiply(batchSize));
-        batchReportDto.setGate3(batchReportDto.getGate3Target().multiply(batchSize));
-        batchReportDto.setGate4(batchReportDto.getGate4Target().multiply(batchSize));
-        batchReportDto.setGate5(batchReportDto.getGate5Target().multiply(batchSize));
-        batchReportDto.setCement1(batchReportDto.getCement1Target().multiply(batchSize));
-        batchReportDto.setCement2(batchReportDto.getCement2Target().multiply(batchSize));
-        batchReportDto.setFiller(batchReportDto.getFillerTarget().multiply(batchSize));
-        batchReportDto.setWater1(batchReportDto.getWater1Target().multiply(batchSize));
-        batchReportDto.setWater2(batchReportDto.getWater2Target().multiply(batchSize));
-        batchReportDto.setSilica(batchReportDto.getSilicaTarget().multiply(batchSize));
-        batchReportDto.setAdm1(batchReportDto.getAdm1Target1().multiply(batchSize));
-        batchReportDto.setAdm2(batchReportDto.getAdm1Target2().multiply(batchSize));
+    private BatchDetailDto setCalculatedParamsByBatchSize(BatchReportDto batchReportDto, BatchDetailDto batchDetailDto) {
+        batchReportDto.setGate1(batchReportDto.getGate1Target().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setGate2(batchReportDto.getGate2Target().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setGate3(batchReportDto.getGate3Target().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setGate4(batchReportDto.getGate4Target().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setGate5(batchReportDto.getGate5Target().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setCement1(batchReportDto.getCement1Target().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setCement2(batchReportDto.getCement2Target().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setFiller(batchReportDto.getFillerTarget().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setWater1(batchReportDto.getWater1Target().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setWater2(batchReportDto.getWater2Target().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setSilica(batchReportDto.getSilicaTarget().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setAdm1(batchReportDto.getAdm1Target1().multiply(batchReportDto.getBatchSize()));
+        batchReportDto.setAdm2(batchReportDto.getAdm1Target2().multiply(batchReportDto.getBatchSize()));
         return batchDetailDto;
     }
 
