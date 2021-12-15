@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="docketreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="871055d0-3d99-48e0-9e27-9f074294c9dc">
 	<property name="ireport.zoom" value="1.2396694214876045"/>
 	<property name="ireport.x" value="0"/>
@@ -519,42 +518,42 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{batcherName}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="429" y="158" width="81" height="15" uuid="be2692d2-ae99-4933-bee5-92d8e2587e86"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{orderedQuantity}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="429" y="173" width="81" height="15" uuid="161e3f1d-2a2f-4e56-a4d4-d5381c77009d"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{prodQuantity}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="429" y="188" width="81" height="15" uuid="194cae4e-5f73-4863-9a68-87fcac79ecbc"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{manualQuantity}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="429" y="203" width="81" height="15" uuid="662724d8-9054-48fe-af91-259d8738af42"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{withthisload}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="429" y="218" width="81" height="15" uuid="662cd174-dda7-470d-b224-8783ef0767a3"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mixerQuantity}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="429" y="233" width="81" height="15" uuid="2361f06f-e8e1-4f50-87b6-4676e70b73ff"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
@@ -836,14 +835,14 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{silicaTarget}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="465" y="46" width="45" height="15" uuid="f33b1463-7bf5-4ae7-9cb1-2adc2bb6b985"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{adm1Target1}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="510" y="46" width="45" height="15" uuid="83647e10-90b9-4235-abcc-33c8770d5e61"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
@@ -890,7 +889,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{gate3Actual}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{gate3Actual}.setScale( 2, java.math.RoundingMode.HALF_UP )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="105" y="0" width="35" height="15" uuid="3e3f79fd-df98-4997-9f76-d2070d239288"/>
@@ -953,14 +952,14 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{adm1Actual1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{adm1Actual1}.setScale( 2, java.math.RoundingMode.HALF_UP )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="510" y="0" width="45" height="15" uuid="71eb1111-3c60-4f63-aa76-59a1d0a5465a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{adm2Actual1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{adm2Actual1}.setScale( 2, java.math.RoundingMode.HALF_UP )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="333" y="0" width="30" height="15" uuid="3bf6e607-524e-41c1-a544-8a51bd536421"/>
@@ -1077,14 +1076,14 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$V{silicaActualSum}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="465" y="59" width="45" height="20" uuid="ceffba7b-2466-4ae0-8cde-d65b0b98d604"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{adm1Actual1Sum}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="510" y="59" width="45" height="20" uuid="b746183c-165f-40c2-9651-e4ef26f71c2d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
@@ -1166,14 +1165,14 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{adm1TotalSet}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{adm1TotalSet}.setScale( 2, java.math.RoundingMode.HALF_UP )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="510" y="24" width="45" height="20" uuid="379181cb-7246-4d19-af2f-419080ee3155"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{adm2TotalSet}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{adm2TotalSet}.setScale( 2, java.math.RoundingMode.HALF_UP )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="78" y="24" width="35" height="20" uuid="bbf9f9e1-6ca9-4b4d-9b87-560382d04a00"/>

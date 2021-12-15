@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.StreamSupport;
 
@@ -113,8 +115,9 @@ public class ReportService {
 
     private BatchReportDto formBatchReports(Object[] obj) {
         BatchReportDto batchReportDto = new BatchReportDto();
-        java.sql.Date batchDate = (java.sql.Date) obj[0];
-        batchReportDto.setBatchDate(batchDate.toString().split(",")[0]);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d", Locale.US);
+        LocalDate localDate = LocalDate.parse(String.valueOf(obj[0]),formatter);
+        batchReportDto.setBatchDate(DateTimeFormatter.ofPattern("d-MMM-yyyy", Locale.US).format(localDate));
         batchReportDto.setBatchStartTime(String.valueOf(obj[1]));
         batchReportDto.setBatchEndTime((String) obj[2]);
         batchReportDto.setBatchNo((BigDecimal) obj[3]);
