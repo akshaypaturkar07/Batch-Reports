@@ -15,11 +15,11 @@ public class ReportsQueryConstants {
             "bd.gate5_actual, bd.cement1_actual,bd.cement2_actual,bd.filler1_actual,bd.water1_actual,bd.water2_actual," +
             "bd.silica_actual,bd.adm1_actual1,bd.adm2_actual1, " +
             "bd.water1_correction,m.plant_name" +
-            " from trn_rmc_batch b" +
-            " inner join trn_rmc_batch_detail bd on b.batch_no =  bd.batch_no" +
-            " inner join mst_plant m on m.int_id = b.int_id" +
-            " inner join mst_name_setup mns on mns.int_id = b.int_id" +
-            " inner join mst_customer_vendor mcv on mcv.int_id = b.int_id" +
+            " from erp.trn_rmc_batch b" +
+            " inner join erp.trn_rmc_batch_detail bd on b.batch_no =  bd.batch_no" +
+            " inner join erp.mst_plant m on m.int_id = b.int_id" +
+            " inner join erp.mst_name_setup mns on mns.int_id = b.int_id" +
+            " inner join erp.mst_customer_vendor mcv on mcv.plant_id = m.plant_id" +
             " where b.batch_no = :batchNo and b.int_id = :id and bd.con_id = :conId and m.plant_id = :plantId";
             
     public static final String GET_BATCH_BY_BATCHNO = "select distinct b.batch_date,b.batch_start_time,b.batch_end_time,b.batch_no,b.site," +

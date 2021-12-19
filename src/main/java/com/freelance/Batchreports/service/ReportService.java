@@ -115,6 +115,7 @@ public class ReportService {
 
     private BatchReportDto formBatchReports(Object[] obj) {
         BatchReportDto batchReportDto = new BatchReportDto();
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d", Locale.US);
         LocalDate localDate = LocalDate.parse(String.valueOf(obj[0]),formatter);
         batchReportDto.setBatchDate(DateTimeFormatter.ofPattern("d-MMM-yyyy", Locale.US).format(localDate));
