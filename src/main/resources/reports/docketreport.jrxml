@@ -204,7 +204,7 @@
                 <text><![CDATA[Customer]]></text>
             </staticText>
             <staticText>
-                <reportElement x="0" y="188" width="155" height="15" uuid="c0e93b19-8f7c-4363-a121-1124d410fcb5"/>
+                <reportElement x="0" y="189" width="155" height="15" uuid="c0e93b19-8f7c-4363-a121-1124d410fcb5"/>
                 <textElement textAlignment="Left" verticalAlignment="Middle">
                     <font size="8" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
                 </textElement>
@@ -434,7 +434,7 @@
                 </textElement>
                 <textFieldExpression><![CDATA[$P{batchDate}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isBlankWhenNull="true">
                 <reportElement x="100" y="120" width="192" height="15" uuid="a748b2f8-072c-46d3-8ae8-f6516251aa68"/>
                 <textElement verticalAlignment="Middle">
                     <font size="8"/>
@@ -462,7 +462,7 @@
                 </textElement>
                 <textFieldExpression><![CDATA[$P{batchNo}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField textAdjust="StretchHeight">
                 <reportElement x="165" y="173" width="145" height="15" uuid="976fd0a4-9068-4ffe-b30e-4f32b867990a"/>
                 <textElement verticalAlignment="Middle">
                     <font size="8"/>
@@ -470,7 +470,7 @@
                 <textFieldExpression><![CDATA[$P{customer}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="165" y="188" width="145" height="15" uuid="52ed83e5-d34c-435a-ac6a-8a230c6f7b50"/>
+                <reportElement x="165" y="189" width="145" height="15" uuid="52ed83e5-d34c-435a-ac6a-8a230c6f7b50"/>
                 <textElement verticalAlignment="Middle">
                     <font size="8"/>
                 </textElement>

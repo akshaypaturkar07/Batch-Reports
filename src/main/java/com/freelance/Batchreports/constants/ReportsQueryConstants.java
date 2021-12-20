@@ -1,7 +1,7 @@
 package com.freelance.Batchreports.constants;
 
 public class ReportsQueryConstants {
-    public static final String GET_AGGREGATED_DATA_BATCH_REPORTS = "select distinct b.batch_date,b.batch_time,b.batch_end_time,b.batch_no," +
+    public static final String GET_AGGREGATED_DATA_BATCH_REPORTS = "select distinct b.batch_date,b.batch_start_time,b.batch_end_time,b.batch_no," +
             "m.plant_address,b.recipe_code," +
             "b.recipe_name,b.truck_no,b.truck_driver,b.order_no,b.batcher_name,b.ordered_qty,b.production_qty," +
             "b.withthisload,b.mixer_capacity,b.batch_size,m.plant_reg_no,mcv.cust_vendor_name," +

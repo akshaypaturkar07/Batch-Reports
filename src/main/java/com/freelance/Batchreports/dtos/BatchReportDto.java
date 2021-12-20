@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Data
 public class BatchReportDto {
@@ -68,5 +69,5 @@ public class BatchReportDto {
     private BigDecimal adm2;
 
     private String plantName;
-    private List<BatchDetailDto> batchDetailDtoList;
+    private Set<BatchDetailDto> batchDetailDtoList;
 }

@@ -27,6 +27,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -77,16 +80,18 @@ public class ReportService {
 
     private BatchReportDto formBatchReportsData(Iterable<Object[]> objects) {
         BatchReportDto batchReportDto = new BatchReportDto();
-        List<BatchDetailDto> batchDetailDtoList = new ArrayList<>();
+        Set<BatchDetailDto> batchDetailDtoList = new HashSet<>();
         Optional<Object[]> optionalObjects = StreamSupport.stream(objects.spliterator(), false).findFirst();
         if (optionalObjects.isPresent()) {
             Object[] obj = optionalObjects.get();
             batchReportDto = formBatchReports(obj);
         }
+        StreamSupport.stream(objects.spliterator(), false).collect(Collectors.toList()).stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting())).entrySet().stream().filter(n-> n.getValue() > 1).map(n-> n.getKey()).collect(Collectors.toList());
         StreamSupport.stream(objects.spliterator(), false).forEach(object -> {
             BatchDetailDto batchDetailDto = formBatchDetails(object);
             batchDetailDtoList.add(batchDetailDto);
         });
+        //batchDetailDtoList = batchDetailDtoList.stream().collect(Collectors.toSet());
         BatchReportDto finalBatchReportDto = batchReportDto;
         batchDetailDtoList.forEach(e -> setCalculatedParamsByProdQuantity(finalBatchReportDto, e));
         batchDetailDtoList.forEach(e -> setCalculatedParamsByBatchSize(finalBatchReportDto, e));
