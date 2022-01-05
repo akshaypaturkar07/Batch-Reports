@@ -1,5 +1,5 @@
 @ECHO OFF
-SET dirPath=E:\\freelance\\BatchReports
+SET dirPath=F:\\freelance\\maven\\batchreports\\batchreports
 CD  %dirPath%
-mvn spring-boot:run
+CALL mvn spring-boot:run
 PAUSE
