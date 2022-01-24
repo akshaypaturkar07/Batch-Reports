@@ -1,16 +1,13 @@
 package com.freelance.Batchreports.constants;
 
 public class SwaggerConstants {
-    public static final String GET_BATCH_DATA = "Get Batch data";
-    public static final String GET_BATCH_DATA_NICK = "Retrieve Batch Data";
-    public static final String GET_BATCH_DATA_200_OK = "Batch Data retrieved Successfully";
-    public static final String GET_BATCH_DETAIL_DATA = "Get Batch Details data";
-    public static final String GET_BATCH_DETAIL_DATA_NICK = "Retrieve Batch Details Data";
-    public static final String GET_BATCH_DETAIL_DATA_200_OK = "Batch Detail Data retrieved Successfully";
-    public static final String GENERATE_PDF = "Generate PDF report by batch number";
-    public static final String GENERATE_PDF_NICK = "Generate Report";
-    public static final String GENERATE_PDF_200_OK = "PDF Report generated for batch number";
+    public static final String GENERATE_BATCH_REPORT = "Generate Batch report by batch number";
+    public static final String GENERATE_BATCH_REPORT_NICK = "Generate Batch Report";
+    public static final String GENERATE_BATCH_REPORT_200_OK = "Batch Report generated for batch number";
 
+    public static final String GENERATE_GRN_REPORT = "Generate GRN report by input";
+    public static final String GENERATE_GRN_REPORT_NICK = "Generate GRN Report";
+    public static final String GENERATE_GRN_REPORT_200_OK = "GRN Report generated for input";
 
 
 }

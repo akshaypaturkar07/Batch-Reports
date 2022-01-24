@@ -21,7 +21,7 @@ public class ReportsQueryConstants {
             " inner join erp.mst_name_setup mns on mns.int_id = b.int_id" +
             " inner join erp.mst_customer_vendor mcv on mcv.plant_id = m.plant_id" +
             " where b.batch_no = :batchNo and b.int_id = :id and bd.con_id = :conId and m.plant_id = :plantId";
-            
+
     public static final String GET_BATCH_BY_BATCHNO = "select distinct b.batch_date,b.batch_start_time,b.batch_end_time,b.batch_no,b.site," +
             "b.recipe_code,b.recipe_name,b.truck_no,b.truck_driver,b.order_no,b.batcher_name,b.ordered_qty,b.production_qty,b.withthisload," +
             "b.mixer_capacity,b.batch_size from trn_rmc_batch b " +
@@ -35,4 +35,44 @@ public class ReportsQueryConstants {
     public static final String GET_PLANT_SERIAL_NO = "select plant_reg_no from mst_plant where int_id = :id limit 1";
 
     public static final String GET_CUSTOMER_NAME = "select cust_vendor_name from mst_customer_vendor where int_id = :id limit 1";
+
+    public static final String GET_GRN_REPORT_DATA = "select distinct tp.con_id,tpoi.po_iw_id,m.comp_name,m.comp_addr,m.mob_no1, " +
+            " tgi.grn_code,tgi.grn_date,tgi.po_id,tp.po_date, mp.plant_name,tgi.ref_challan_no,tpoi.veh_no, " +
+            " mcv.cust_vendor_name,mcv.cust_vendor_addr,mcv.gst_no,m.gst_no, mi.item_code,mi.item_desc,mu.unit_name,tgi.item_qty,tgi.unit_rate, " +
+            " tgi.cgst_rate,tgi.sgst_rate,tgi.igst_rate,tgi.disc_percent,tgi.freight_charges, ms.statename,ms.statecode " +
+            " from mst_host_company  m " +
+            " inner join trn_grn_info tgi on m.hc_id = tgi.hc_id  " +
+            " inner join trn_po tp on  tgi.po_id = tp.po_id  " +
+            " inner join mst_plant mp on mp.plant_id = tgi.plant_id " +
+            " inner join trn_plant_office_inward tpoi on tpoi.po_id=tgi.po_id " +
+            " inner join mst_customer_vendor mcv on  mcv.cust_vendor_id = tgi.vendor_id " +
+            " inner join mst_item mi on  mi.item_id = tgi.item_id  " +
+            " inner join mst_unit mu on mu.unit_id = mi.unit_id " +
+            " inner join mst_state ms on ms.id = m.comp_state_id " +
+            " where m.hc_id = :hcId and tgi.plant_id = :plantId and mcv.cust_vendor_id = :vendorId and tpoi.po_iw_id = :poId and tp.con_id = :conId";
+
+    public static final String GET_PO_REPORT_DATA = "select mst_host_company.comp_name,mst_host_company.comp_addr,mst_host_company.mob_no1, " +
+            " trn_po.po_id,trn_po.po_date,mst_plant.plant_name,mst_plant.plant_address, mst_customer_vendor.gst_no,mst_customer_vendor.cust_vendor_code,mst_customer_vendor.cust_vendor_name, " +
+            " mst_customer_vendor.gst_no,mst_customer_vendor.cust_vendor_firm_name,mst_customer_vendor.mob_no1, " +
+            " mst_item.item_code,mst_item.item_desc,mst_item.hsn_code, trn_po_item.item_qty,trn_po_item.unit_rate,trn_po_item.cgst_rate,trn_po_item.sgst_rate,trn_po_item.igst_rate " +
+            " from mst_host_company inner join trn_grn_info on mst_host_company.hc_id = trn_grn_info.hc_id inner join trn_po on " +
+            " trn_grn_info.po_id = trn_po.po_id inner join trn_po_item on trn_po_item.po_id =  trn_po.po_id inner join mst_plant on " +
+            " mst_plant.plant_id = trn_po.plant_id inner join mst_customer_vendor on mst_customer_vendor.cust_vendor_id = trn_po.vendor_id " +
+            " inner join mst_item on mst_item.item_id = trn_grn_info.item_id where trn_po.po_id = :id ";
+
+    public static final String GET_TAX_INVOICE_REPORT_DATA = "select mst_host_company.comp_name,mst_host_company.comp_addr,mst_host_company.mob_no1, " +
+            " trn_invoice_info.invoice_code,trn_invoice_info.invoice_date,trn_so.so_date,trn_so.so_id,mst_customer_vendor.cust_vendor_code, " +
+            " mst_customer_vendor.cust_vendor_Name,mst_customer_vendor.gst_no, " +
+            " mst_customer_vendor.mob_no1,mst_customer_vendor.cust_vendor_name,trn_po_item.item_qty,trn_po_item.unit_rate, " +
+            " trn_po_item.cgst_rate,trn_po_item.sgst_rate,trn_po_item.igst_rate,mst_item.item_code,mst_item.hsn_code " +
+            " from mst_host_company " +
+            " inner join trn_grn_info on trn_grn_info.hc_id = mst_host_company.hc_id " +
+            " inner join trn_invoice_info on trn_invoice_info.hc_id = trn_grn_info.hc_id " +
+            " inner join mst_plant on mst_plant.int_id = mst_host_company.int_id " +
+            " inner join trn_so on trn_so.plant_id = mst_plant.plant_id " +
+            " inner join trn_po on mst_plant.plant_id = trn_po.plant_id " +
+            " inner join trn_po_item on trn_po_item.po_id =  trn_po.po_id " +
+            " inner join mst_item on mst_item.item_id = trn_po_item.item_id " +
+            " inner join mst_customer_vendor on mst_customer_vendor.cust_vendor_id = trn_po.vendor_id;";
+
 }

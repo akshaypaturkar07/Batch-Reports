@@ -80,4 +80,35 @@ public class FieldConstants {
 
     public static final String BATCH_DETAIL_LIST = "batchdetails";
     public static final String IMAGES = "images";
+
+    // GRN Report fields
+    public static final String COMPANY_NAME = "companyName";
+    public static final String COMPANY_ADDRESS = "companyAddress";
+    public static final String MOBILE_NO = "mobileNo";
+    public static final String GRN_CODE = "grnCode";
+    public static final String GRN_DATE = "grnDate";
+    public static final String PO_ID = "poId";
+    public static final String PO_DATE = "poDate";
+    public static final String CHALLAN_NO = "refChallanNo";
+    public static final String VEHICLE_NO = "vehicleNo";
+    public static final String DRIVER_NO = "driverNo";
+    public static final String CUST_VENDOR_NAME = "custVendorName";
+    public static final String CUST_VENDOR_ADDRESS = "custVendorAddress";
+    public static final String GST_NO = "gstNo";
+    public static final String GST_NUM = "gstNum";
+    public static final String STATE_CODE = "stateCode";
+    public static final String STATE_NAME = "stateName";
+    public static final String ITEM_CODE = "itemCode";
+    public static final String ITEM_DESC = "itemDesc";
+    public static final String UNIT_NAME = "unitName";
+    public static final String ITEM_QUANTITY = "itemQuantity";
+    public static final String UNIT_RATE = "unitRate";
+    public static final String CGST_RATE = "cgstRate";
+    public static final String SGST_RATE = "sgstRate";
+    public static final String IGST_RATE = "igstRate";
+    public static final String FREIGHT_CHARGES = "freightCharges";
+    public static final String DISCOUNT = "discPercent";
+    public static final String TAX_AMT_WORDS = "taxAmountInWords";
+    public static final String AMT_WORDS = "amountInWords";
+
 }
