@@ -16,14 +16,14 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = {"com.freelance.*"})
 public class BatchreportsApplication {
    private static final Logger logger = LoggerFactory.getLogger(BatchreportsApplication.class);
-   @Value("${spring.datasource.url}")
-   private String dbUrl;
    @Value("${spring.datasource.driver-class-name}")
    private String dbDriverClass;
    @Value("${spring.datasource.username}")
    private String dbUserName;
    @Value("${spring.datasource.password}")
    private String dbPassword;
+	@Value("${spring.datasource.url}")
+	private String dbUrl;
 
 
 	public static void main(String[] args) {

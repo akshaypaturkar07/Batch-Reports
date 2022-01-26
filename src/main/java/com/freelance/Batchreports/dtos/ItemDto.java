@@ -9,8 +9,8 @@ public class ItemDto {
     private String itemCode;
     private String itemDesc;
     private String unitName;
-    private Long itemQuantity;
-    private Long unitRate;
+    private String itemQuantity;
+    private String unitRate;
 
     @Override
     public boolean equals(Object o) {

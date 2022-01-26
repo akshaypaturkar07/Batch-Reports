@@ -5,12 +5,15 @@ import com.freelance.Batchreports.dtos.BatchDetailDto;
 import com.freelance.Batchreports.dtos.BatchReportDto;
 import com.freelance.Batchreports.dtos.GrnReportDto;
 import com.freelance.Batchreports.dtos.ItemDto;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
+@Service
 public class GrnReportUtils {
 
     public GrnReportDto formGrnReport(Iterable<Object[]> objects) {
@@ -34,9 +37,9 @@ public class GrnReportUtils {
         grnReportDto.setCompanyName(String.valueOf(obj[0]));
         grnReportDto.setCompanyAddress(String.valueOf(obj[1]));
         grnReportDto.setMobileNo(String.valueOf(obj[2]));
-        grnReportDto.setGrnDate(String.valueOf(obj[3]));
+        grnReportDto.setGrnCode(String.valueOf(obj[3]));
         grnReportDto.setGrnDate(String.valueOf(obj[4]));
-        grnReportDto.setPoId((Integer)obj[5]);
+        grnReportDto.setPoId(String.valueOf(obj[5]));
         grnReportDto.setPoDate(String.valueOf(obj[6]));
         grnReportDto.setPlantName(String.valueOf(obj[7]));
         grnReportDto.setRefChallanNo(String.valueOf(obj[8]));
@@ -45,11 +48,11 @@ public class GrnReportUtils {
         grnReportDto.setCustVendorAddress(String.valueOf(obj[11]));
         grnReportDto.setSupplierGstNo(String.valueOf(obj[12]));
         grnReportDto.setConsineeGstNo(String.valueOf(obj[13]));
-        grnReportDto.setCgstRate((Integer)obj[19]);
-        grnReportDto.setSgstRate((Integer)obj[20]);
-        grnReportDto.setIgstRate((Integer)obj[21]);
-        grnReportDto.setDiscPercent((Double)obj[22]);
-        grnReportDto.setFreightCharge((Double)obj[23]);
+        grnReportDto.setCgstRate(String.valueOf(obj[19]));
+        grnReportDto.setSgstRate(String.valueOf(obj[20]));
+        grnReportDto.setIgstRate(String.valueOf(obj[21]));
+        grnReportDto.setDiscPercent(String.valueOf(obj[22]));
+        grnReportDto.setFreightCharge(String.valueOf(obj[23]));
         grnReportDto.setStateName(String.valueOf(obj[24]));
         grnReportDto.setStateCode(String.valueOf(obj[25]));
         return grnReportDto;
@@ -60,8 +63,8 @@ public class GrnReportUtils {
         itemDto.setItemCode(String.valueOf(obj[14]));
         itemDto.setItemDesc(String.valueOf(obj[15]));
         itemDto.setUnitName(String.valueOf(obj[16]));
-        itemDto.setItemQuantity((Long)obj[17]);
-        itemDto.setUnitRate((Long)obj[18]);
+        itemDto.setItemQuantity(String.valueOf(obj[17]));
+        itemDto.setUnitRate(String.valueOf(obj[18]));
         return itemDto;
     }
 

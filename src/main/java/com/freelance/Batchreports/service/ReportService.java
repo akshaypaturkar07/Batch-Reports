@@ -11,6 +11,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -38,6 +39,9 @@ public class ReportService {
     @Autowired
     private GrnReportUtils grnReportUtils;
 
+    @Autowired
+    private ResourceLoader resourceLoader;
+
     public byte[] generateBatchReports(BigDecimal batchNo, BigDecimal id, BigDecimal contactId, BigDecimal plantId, HttpServletResponse response) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
@@ -63,14 +67,14 @@ public class ReportService {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
             logger.info("Generating GRN report");
-            String realPath = ResourceUtils.getFile("classpath:reports").getAbsolutePath() + "/";
+            //String realPath = ResourceUtils.getFile("classpath:reports").getAbsolutePath() + "/";
             Iterable<Object[]> reportData = dataRepository.getGRNReportsData(hcId,plantId,vendorId,poId,conId);
             GrnReportDto grnReportDto = grnReportUtils.formGrnReport(reportData);
-            File file = ResourceUtils.getFile("classpath:reports/GrnReport.jrxml");
+            File file = resourceLoader.getResource("classpath:reports/GrnReport.jrxml").getFile();
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
             JRDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(grnReportDto.getItemList());
             Map<String, Object> parameters = grnReportUtils.buildParamMap(grnReportDto);
-            parameters.put(FieldConstants.IMAGES, realPath);
+            //parameters.put(FieldConstants.IMAGES, realPath);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,beanCollectionDataSource);
             JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
         } catch (Exception e) {

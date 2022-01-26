@@ -2,6 +2,7 @@ package com.freelance.Batchreports.dtos;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Data
@@ -11,7 +12,7 @@ public class GrnReportDto {
     private String mobileNo;
     private String grnCode;
     private String grnDate;
-    private Integer poId;
+    private String poId;
     private String poDate;
     private String plantName;
     private String refChallanNo;
@@ -23,11 +24,11 @@ public class GrnReportDto {
     private String stateName;
     private String stateCode;
     private Set<ItemDto> itemList;
-    private Integer cgstRate;
-    private Integer sgstRate;
-    private Integer igstRate;
-    private Double discPercent;
-    private Double freightCharge;
+    private String cgstRate;
+    private String sgstRate;
+    private String igstRate;
+    private String discPercent;
+    private String freightCharge;
     private String taxAmountInWords;
     private String amountInWords;
 }

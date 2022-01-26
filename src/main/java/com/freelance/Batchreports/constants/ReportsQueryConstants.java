@@ -36,19 +36,19 @@ public class ReportsQueryConstants {
 
     public static final String GET_CUSTOMER_NAME = "select cust_vendor_name from mst_customer_vendor where int_id = :id limit 1";
 
-    public static final String GET_GRN_REPORT_DATA = "select distinct tp.con_id,tpoi.po_iw_id,m.comp_name,m.comp_addr,m.mob_no1, " +
+    public static final String GET_GRN_REPORT_DATA = "select distinct m.comp_name,m.comp_addr,m.mob_no1, " +
             " tgi.grn_code,tgi.grn_date,tgi.po_id,tp.po_date, mp.plant_name,tgi.ref_challan_no,tpoi.veh_no, " +
-            " mcv.cust_vendor_name,mcv.cust_vendor_addr,mcv.gst_no,m.gst_no, mi.item_code,mi.item_desc,mu.unit_name,tgi.item_qty,tgi.unit_rate, " +
+            " mcv.cust_vendor_name,mcv.cust_vendor_addr,mcv.gst_no as gstNo,m.gst_no as gstNum, mi.item_code,mi.item_desc,mu.unit_name,tgi.item_qty,tgi.unit_rate, " +
             " tgi.cgst_rate,tgi.sgst_rate,tgi.igst_rate,tgi.disc_percent,tgi.freight_charges, ms.statename,ms.statecode " +
-            " from mst_host_company  m " +
-            " inner join trn_grn_info tgi on m.hc_id = tgi.hc_id  " +
-            " inner join trn_po tp on  tgi.po_id = tp.po_id  " +
-            " inner join mst_plant mp on mp.plant_id = tgi.plant_id " +
-            " inner join trn_plant_office_inward tpoi on tpoi.po_id=tgi.po_id " +
-            " inner join mst_customer_vendor mcv on  mcv.cust_vendor_id = tgi.vendor_id " +
-            " inner join mst_item mi on  mi.item_id = tgi.item_id  " +
-            " inner join mst_unit mu on mu.unit_id = mi.unit_id " +
-            " inner join mst_state ms on ms.id = m.comp_state_id " +
+            " from br2.mst_host_company  m " +
+            " inner join br2.trn_grn_info tgi on m.hc_id = tgi.hc_id  " +
+            " inner join br2.trn_po tp on  tgi.po_id = tp.po_id  " +
+            " inner join br2.mst_plant mp on mp.plant_id = tgi.plant_id " +
+            " inner join br2.trn_plant_office_inward tpoi on tpoi.po_id=tgi.po_id " +
+            " inner join br2.mst_customer_vendor mcv on  mcv.cust_vendor_id = tgi.vendor_id " +
+            " inner join br2.mst_item mi on  mi.item_id = tgi.item_id  " +
+            " inner join br2.mst_unit mu on mu.unit_id = mi.unit_id " +
+            " inner join br2.mst_state ms on ms.id = m.comp_state_id " +
             " where m.hc_id = :hcId and tgi.plant_id = :plantId and mcv.cust_vendor_id = :vendorId and tpoi.po_iw_id = :poId and tp.con_id = :conId";
 
     public static final String GET_PO_REPORT_DATA = "select mst_host_company.comp_name,mst_host_company.comp_addr,mst_host_company.mob_no1, " +

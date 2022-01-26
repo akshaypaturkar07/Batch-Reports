@@ -4,6 +4,8 @@ import com.freelance.Batchreports.constants.FieldConstants;
 import com.freelance.Batchreports.dtos.BatchDetailDto;
 import com.freelance.Batchreports.dtos.BatchReportDto;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,7 +14,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
+@Service
 public class BatchReportUtils {
 
     public BatchReportDto formBatchReportsData(Iterable<Object[]> objects) {
