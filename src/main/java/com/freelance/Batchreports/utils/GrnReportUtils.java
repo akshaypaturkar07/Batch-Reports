@@ -48,11 +48,11 @@ public class GrnReportUtils {
         grnReportDto.setCustVendorAddress(String.valueOf(obj[11]));
         grnReportDto.setSupplierGstNo(String.valueOf(obj[12]));
         grnReportDto.setConsineeGstNo(String.valueOf(obj[13]));
-        grnReportDto.setCgstRate(String.valueOf(obj[19]));
-        grnReportDto.setSgstRate(String.valueOf(obj[20]));
-        grnReportDto.setIgstRate(String.valueOf(obj[21]));
-        grnReportDto.setDiscPercent(String.valueOf(obj[22]));
-        grnReportDto.setFreightCharge(String.valueOf(obj[23]));
+        grnReportDto.setCgstRate((BigDecimal) obj[19]);
+        grnReportDto.setSgstRate((BigDecimal) obj[20]);
+        grnReportDto.setIgstRate((BigDecimal) obj[21]);
+        grnReportDto.setDiscPercent((BigDecimal) obj[22]);
+        grnReportDto.setFreightCharge((BigDecimal) obj[23]);
         grnReportDto.setStateName(String.valueOf(obj[24]));
         grnReportDto.setStateCode(String.valueOf(obj[25]));
         return grnReportDto;
