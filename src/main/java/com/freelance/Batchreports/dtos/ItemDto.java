@@ -2,6 +2,7 @@ package com.freelance.Batchreports.dtos;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Data
@@ -9,8 +10,15 @@ public class ItemDto {
     private String itemCode;
     private String itemDesc;
     private String unitName;
-    private String itemQuantity;
-    private String unitRate;
+    private BigDecimal itemQuantity;
+    private BigDecimal unitRate;
+    private BigDecimal cgstRate;
+    private BigDecimal sgstRate;
+    private BigDecimal igstRate;
+    private BigDecimal discPercent;
+    private BigDecimal freightCharge;
+    private String taxAmountInWords;
+    private String amountInWords;
 
     @Override
     public boolean equals(Object o) {

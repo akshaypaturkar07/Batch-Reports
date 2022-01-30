@@ -67,12 +67,14 @@ public class ReportService {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
             logger.info("Generating GRN report");
+            String realPath = ResourceUtils.getFile("classpath:reports").getAbsolutePath() + "\\";
             Iterable<Object[]> reportData = dataRepository.getGRNReportsData(hcId,plantId,vendorId,poId,conId);
             GrnReportDto grnReportDto = grnReportUtils.formGrnReport(reportData);
             File file = ResourceUtils.getFile("classpath:reports/grnreport.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
             JRDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(grnReportDto.getItemList());
             Map<String, Object> parameters = grnReportUtils.buildParamMap(grnReportDto);
+            parameters.put(FieldConstants.IMAGES, realPath);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,beanCollectionDataSource);
             JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
         } catch (Exception e) {

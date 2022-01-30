@@ -48,11 +48,6 @@ public class GrnReportUtils {
         grnReportDto.setCustVendorAddress(String.valueOf(obj[11]));
         grnReportDto.setSupplierGstNo(String.valueOf(obj[12]));
         grnReportDto.setConsineeGstNo(String.valueOf(obj[13]));
-        grnReportDto.setCgstRate((BigDecimal) obj[19]);
-        grnReportDto.setSgstRate((BigDecimal) obj[20]);
-        grnReportDto.setIgstRate((BigDecimal) obj[21]);
-        grnReportDto.setDiscPercent((BigDecimal) obj[22]);
-        grnReportDto.setFreightCharge((BigDecimal) obj[23]);
         grnReportDto.setStateName(String.valueOf(obj[24]));
         grnReportDto.setStateCode(String.valueOf(obj[25]));
         return grnReportDto;
@@ -63,8 +58,13 @@ public class GrnReportUtils {
         itemDto.setItemCode(String.valueOf(obj[14]));
         itemDto.setItemDesc(String.valueOf(obj[15]));
         itemDto.setUnitName(String.valueOf(obj[16]));
-        itemDto.setItemQuantity(String.valueOf(obj[17]));
-        itemDto.setUnitRate(String.valueOf(obj[18]));
+        itemDto.setItemQuantity((BigDecimal) obj[17]);
+        itemDto.setUnitRate((BigDecimal)obj[18]);
+        itemDto.setCgstRate((BigDecimal) obj[19]);
+        itemDto.setSgstRate((BigDecimal) obj[20]);
+        itemDto.setIgstRate((BigDecimal) obj[21]);
+        itemDto.setDiscPercent((BigDecimal) obj[22]);
+        itemDto.setFreightCharge((BigDecimal) obj[23]);
         return itemDto;
     }
 
@@ -87,13 +87,6 @@ public class GrnReportUtils {
         map.put(FieldConstants.GST_NUM,grnReportDto.getConsineeGstNo());
         map.put(FieldConstants.STATE_NAME,grnReportDto.getStateName());
         map.put(FieldConstants.STATE_CODE,grnReportDto.getStateCode());
-        map.put(FieldConstants.CGST_RATE,grnReportDto.getCgstRate());
-        map.put(FieldConstants.SGST_RATE,grnReportDto.getSgstRate());
-        map.put(FieldConstants.IGST_RATE,grnReportDto.getIgstRate());
-        map.put(FieldConstants.FREIGHT_CHARGES,grnReportDto.getFreightCharge());
-        map.put(FieldConstants.DISCOUNT,grnReportDto.getDiscPercent());
-        map.put(FieldConstants.TAX_AMT_WORDS,grnReportDto.getTaxAmountInWords());
-        map.put(FieldConstants.AMT_WORDS,grnReportDto.getAmountInWords());
         return map;
     }
 

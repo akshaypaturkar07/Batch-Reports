@@ -24,11 +24,4 @@ public class GrnReportDto {
     private String stateName;
     private String stateCode;
     private Set<ItemDto> itemList;
-    private BigDecimal cgstRate;
-    private BigDecimal sgstRate;
-    private BigDecimal igstRate;
-    private BigDecimal discPercent;
-    private BigDecimal freightCharge;
-    private String taxAmountInWords;
-    private String amountInWords;
 }
