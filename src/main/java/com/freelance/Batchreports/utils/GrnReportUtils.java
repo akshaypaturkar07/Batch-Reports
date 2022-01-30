@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.StreamSupport;
 
@@ -32,14 +34,17 @@ public class GrnReportUtils {
     }
 
     private GrnReportDto formGrnData(Object[] obj) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d", Locale.US);
+        LocalDate grnDate = LocalDate.parse(String.valueOf(obj[4]),formatter);
+        LocalDate poDate = LocalDate.parse(String.valueOf(obj[6]),formatter);
         GrnReportDto grnReportDto = new GrnReportDto();
         grnReportDto.setCompanyName(String.valueOf(obj[0]));
         grnReportDto.setCompanyAddress(String.valueOf(obj[1]));
         grnReportDto.setMobileNo(String.valueOf(obj[2]));
         grnReportDto.setGrnCode(String.valueOf(obj[3]));
-        grnReportDto.setGrnDate(String.valueOf(obj[4]));
+        grnReportDto.setGrnDate(DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.US).format(grnDate));
         grnReportDto.setPoId(String.valueOf(obj[5]));
-        grnReportDto.setPoDate(String.valueOf(obj[6]));
+        grnReportDto.setPoDate(DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US).format(poDate));
         grnReportDto.setPlantName(String.valueOf(obj[7]));
         grnReportDto.setRefChallanNo(String.valueOf(obj[8]));
         grnReportDto.setVehicleNo(String.valueOf(obj[9]));
