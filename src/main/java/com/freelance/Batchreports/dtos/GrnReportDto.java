@@ -23,5 +23,7 @@ public class GrnReportDto {
     private String consineeGstNo;
     private String stateName;
     private String stateCode;
+    private String taxAmountInWords;
+    private String amountInWords;
     private Set<ItemDto> itemList;
 }

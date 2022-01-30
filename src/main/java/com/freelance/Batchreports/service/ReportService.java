@@ -70,10 +70,12 @@ public class ReportService {
             String realPath = ResourceUtils.getFile("classpath:reports").getAbsolutePath() + "\\";
             Iterable<Object[]> reportData = dataRepository.getGRNReportsData(hcId,plantId,vendorId,poId,conId);
             GrnReportDto grnReportDto = grnReportUtils.formGrnReport(reportData);
+            grnReportDto.getItemList().stream().findFirst().get().setAmountInWords(grnReportDto.getAmountInWords());
+            grnReportDto.getItemList().stream().findFirst().get().setTaxAmountInWords(grnReportDto.getTaxAmountInWords());
             File file = ResourceUtils.getFile("classpath:reports/grnreport.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
             JRDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(grnReportDto.getItemList());
-            Map<String, Object> parameters = grnReportUtils.buildParamMap(grnReportDto);
+            Map<String, Object> parameters = grnReportUtils.buildParamMap(grnReportDto,grnReportDto.getItemList());
             parameters.put(FieldConstants.IMAGES, realPath);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,beanCollectionDataSource);
             JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
