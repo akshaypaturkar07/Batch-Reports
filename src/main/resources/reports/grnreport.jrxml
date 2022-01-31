@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GRN_Format_JRXML_Report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fa371286-da49-4f6b-88f9-03132b65b38b">
-	<property name="ireport.zoom" value="1.3636363636363644"/>
+	<property name="ireport.zoom" value="1.5000000000000024"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="144"/>
 	<parameter name="companyName" class="java.lang.String"/>
 	<parameter name="companyAddress" class="java.lang.String"/>
 	<parameter name="mobileNo" class="java.lang.String"/>
@@ -20,6 +20,7 @@
 	<parameter name="stateCode" class="java.lang.String"/>
 	<parameter name="stateName" class="java.lang.String"/>
 	<parameter name="images" class="java.lang.String"/>
+	<parameter name="driverName" class="java.lang.String"/>
 	<field name="itemCode" class="java.lang.String"/>
 	<field name="itemDesc" class="java.lang.String"/>
 	<field name="unitName" class="java.lang.String"/>
@@ -33,19 +34,19 @@
 	<field name="amountInWords" class="java.lang.String"/>
 	<field name="discPercent" class="java.math.BigDecimal"/>
 	<variable name="singleItemTotal" class="java.math.BigDecimal">
-		<variableExpression><![CDATA[$F{itemQuantity} * $F{unitRate}]]></variableExpression>
+		<variableExpression><![CDATA[new BigDecimal($F{itemQuantity} * $F{unitRate}).setScale(2, RoundingMode.HALF_UP)]]></variableExpression>
 	</variable>
 	<variable name="subTotal" class="java.math.BigDecimal" calculation="Sum">
-		<variableExpression><![CDATA[$V{singleItemTotal}]]></variableExpression>
+		<variableExpression><![CDATA[new BigDecimal($V{singleItemTotal}).setScale(2, RoundingMode.HALF_UP)]]></variableExpression>
 	</variable>
 	<variable name="calculatedCgst" class="java.math.BigDecimal">
-		<variableExpression><![CDATA[( $V{subTotal} * $F{cgstRate} ) / 100]]></variableExpression>
+		<variableExpression><![CDATA[new BigDecimal((( $V{subTotal} * $F{cgstRate} ) / 100)).setScale(2, RoundingMode.HALF_UP)]]></variableExpression>
 	</variable>
 	<variable name="calculatedSgst" class="java.math.BigDecimal">
-		<variableExpression><![CDATA[( $V{subTotal} * $F{sgstRate} ) / 100]]></variableExpression>
+		<variableExpression><![CDATA[new BigDecimal((( $V{subTotal} * $F{sgstRate} ) / 100)).setScale(2, RoundingMode.HALF_UP)]]></variableExpression>
 	</variable>
 	<variable name="calculatedIgst" class="java.math.BigDecimal">
-		<variableExpression><![CDATA[( $V{subTotal} * $F{igstRate} ) / 100]]></variableExpression>
+		<variableExpression><![CDATA[new BigDecimal((( $V{subTotal} * $F{igstRate} ) / 100)).setScale(2, RoundingMode.HALF_UP)]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -192,14 +193,6 @@
 				<reportElement x="0" y="167" width="555" height="1" uuid="1c5aa63d-6aea-4cc8-9803-4d42e508bb37"/>
 			</line>
 			<staticText>
-				<reportElement x="365" y="147" width="190" height="20" uuid="540eb64c-1ae9-4423-8a9c-e901dbfbf06b"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-					<paragraph leftIndent="2"/>
-				</textElement>
-				<text><![CDATA[XXXX XXXX XXXX XXXX]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="0" y="168" width="274" height="20" uuid="de5d4a90-1062-4547-94bd-686ac66ede9c"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8" isBold="true" isUnderline="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
@@ -292,7 +285,7 @@
 			<textField>
 				<reportElement x="0" y="50" width="555" height="15" uuid="aba49804-c20c-4877-93f8-c46b0c98985e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{mobileNo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Ph No : " + $P{mobileNo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="90" y="87" width="185" height="20" uuid="f004f2db-1fe0-4779-bd67-6906f424a9ab"/>
@@ -409,6 +402,13 @@
 				<reportElement x="2" y="2" width="61" height="65" uuid="e3381f02-4926-4b3d-be42-fbe5f82f0121"/>
 				<imageExpression><![CDATA[$P{images}+"rmc.jpg"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="365" y="147" width="190" height="20" uuid="3403d28f-b167-4a41-aba5-d81f8eeaf2df"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{driverName}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -942,7 +942,7 @@
 					<font isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
 					<paragraph rightIndent="2"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{subTotal} + $V{calculatedCgst} + $V{calculatedSgst} + $V{calculatedIgst} - $F{discPercent}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new BigDecimal($V{subTotal} + $V{calculatedCgst} + $V{calculatedSgst} + $V{calculatedIgst} - $F{discPercent}).setScale(2, RoundingMode.HALF_UP)]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="475" y="85" width="80" height="20" uuid="426c9cd4-0b2e-48b2-98a2-7d9357c720f8"/>

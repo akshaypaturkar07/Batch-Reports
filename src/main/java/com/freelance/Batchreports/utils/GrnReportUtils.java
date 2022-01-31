@@ -97,7 +97,11 @@ public class GrnReportUtils {
     }
 
     private BigDecimal calculateTotalAmount(Set<ItemDto> itemDtos) {
-        return getSubTotal(itemDtos).add(getTotalTax(itemDtos));
+        BigDecimal subTotal = getSubTotal(itemDtos);
+        BigDecimal tax = getTotalTax(itemDtos);
+        BigDecimal freightCharges =  itemDtos.stream().findFirst().get().getFreightCharge();
+        BigDecimal discount =  (subTotal.multiply(itemDtos.stream().findFirst().get().getDiscPercent()).divide(BigDecimal.valueOf(100)));
+        return BigDecimal.valueOf(subTotal.longValue()+tax.longValue()+freightCharges.longValue()-discount.longValue());
     }
 
     private BigDecimal getSubTotal(Set<ItemDto> itemDtos) {
@@ -113,11 +117,7 @@ public class GrnReportUtils {
         BigDecimal cgst = (itemDtos.stream().findFirst().get().getCgstRate().multiply(subTotal)).divide(BigDecimal.valueOf(100));
         BigDecimal sgst = (itemDtos.stream().findFirst().get().getSgstRate().multiply(subTotal)).divide(BigDecimal.valueOf(100));
         BigDecimal igst = (itemDtos.stream().findFirst().get().getIgstRate().multiply(subTotal)).divide(BigDecimal.valueOf(100));
-        BigDecimal freightCharges = itemDtos.stream().findFirst().get().getFreightCharge();
-        if(freightCharges == null){
-            freightCharges = BigDecimal.valueOf(0);
-        }
-        long totalTax = cgst.longValue() + sgst.longValue() + igst.longValue() + freightCharges.longValue();
+        long totalTax = cgst.longValue() + sgst.longValue() + igst.longValue();
         return BigDecimal.valueOf(totalTax);
     }
 
