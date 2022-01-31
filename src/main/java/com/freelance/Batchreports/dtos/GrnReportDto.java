@@ -25,5 +25,6 @@ public class GrnReportDto {
     private String stateCode;
     private String taxAmountInWords;
     private String amountInWords;
+    private BigDecimal grandTotal;
     private Set<ItemDto> itemList;
 }

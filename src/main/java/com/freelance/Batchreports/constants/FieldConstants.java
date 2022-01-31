@@ -110,5 +110,5 @@ public class FieldConstants {
     public static final String DISCOUNT = "discPercent";
     public static final String TAX_AMT_WORDS = "taxAmountInWords";
     public static final String AMT_WORDS = "amountInWords";
-
+    public static final String GRAND_TOTAL = "grandTotal";
 }

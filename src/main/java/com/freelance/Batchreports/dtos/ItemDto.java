@@ -19,6 +19,7 @@ public class ItemDto {
     private BigDecimal freightCharge;
     private String taxAmountInWords;
     private String amountInWords;
+    private BigDecimal grandTotal;
 
     @Override
     public boolean equals(Object o) {

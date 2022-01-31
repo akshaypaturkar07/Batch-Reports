@@ -96,7 +96,7 @@ public class GrnReportUtils {
         return map;
     }
 
-    private BigDecimal calculateTotalAmount(Set<ItemDto> itemDtos) {
+    public BigDecimal calculateTotalAmount(Set<ItemDto> itemDtos) {
         BigDecimal subTotal = getSubTotal(itemDtos);
         BigDecimal tax = getTotalTax(itemDtos);
         BigDecimal freightCharges =  itemDtos.stream().findFirst().get().getFreightCharge();

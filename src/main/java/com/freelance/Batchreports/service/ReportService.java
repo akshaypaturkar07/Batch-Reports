@@ -72,11 +72,14 @@ public class ReportService {
             GrnReportDto grnReportDto = grnReportUtils.formGrnReport(reportData);
             grnReportDto.getItemList().stream().findFirst().get().setAmountInWords(grnReportDto.getAmountInWords());
             grnReportDto.getItemList().stream().findFirst().get().setTaxAmountInWords(grnReportDto.getTaxAmountInWords());
+            grnReportDto.getItemList().stream().findFirst().get().setGrandTotal(grnReportUtils.calculateTotalAmount(grnReportDto.getItemList()));
+            grnReportDto.setGrandTotal(grnReportUtils.calculateTotalAmount(grnReportDto.getItemList()));
             File file = ResourceUtils.getFile("classpath:reports/grnreport.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
             JRDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(grnReportDto.getItemList());
             Map<String, Object> parameters = grnReportUtils.buildParamMap(grnReportDto,grnReportDto.getItemList());
             parameters.put(FieldConstants.IMAGES, realPath);
+            parameters.put(FieldConstants.GRAND_TOTAL,grnReportDto.getGrandTotal().setScale(2, BigDecimal.ROUND_UP));
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,beanCollectionDataSource);
             JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
         } catch (Exception e) {
