@@ -111,4 +111,32 @@ public class FieldConstants {
     public static final String TAX_AMT_WORDS = "taxAmountInWords";
     public static final String AMT_WORDS = "amountInWords";
     public static final String GRAND_TOTAL = "grandTotal";
+    public static final String EMAIL = "email";
+    public static final String BRANCH_NAME = "branchName";
+    public static final String QUOTE_NO = "quoteNo";
+    public static final String QUOTE_DATE = "quoteDate";
+    public static final String MODE_OF_SHIPMENT = "modeOfShipment";
+    public static final String DELIVERY_NAME = "deliveryName";
+    public static final String DELIVERY_ADDRESS = "deliveryAddress";
+    public static final String SITE_CONTACT_NO = "siteContactNo";
+    public static final String SITE_CONTACT = "siteContact";
+    public static final String SITE_EMAIL = "siteEmail";
+    public static final String SITE_GST_NO = "siteGstNo";
+    public static final String VENDOR_CODE = "vendorCode";
+    public static final String VENDOR_NAME = "vendorName";
+    public static final String VENDOR_ADDRESS = "vendorAddress";
+    public static final String SUPPLIER_GST_NO = "supplierGstNo";
+    public static final String CONTACT_PERSON_NAME = "contactPersonName";
+    public static final String VENDOR_CONTACT_NO = "vendorContactNo";
+    public static final String DELIVERY_SHIP_FROM = "deliveryShipFrom";
+    public static final String SUB_TOTAL = "subTotal";
+    public static final String FREIGHT_CHARGE = "freightCharge";
+    public static final String CGST_RATE1 = "cgstRate1";
+    public static final String SGST_RATE1 = "sgstRate1";
+    public static final String CGST_RATE2 = "cgstRate2";
+    public static final String SGST_RATE2 = "sgstRate2";
+    public static final String TOTAL = "docTotal";
+    public static final String TOTAL_IN_WORDS = "docTotalInWords";
+
+
 }

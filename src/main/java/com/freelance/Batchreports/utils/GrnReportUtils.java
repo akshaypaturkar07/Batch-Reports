@@ -72,7 +72,7 @@ public class GrnReportUtils {
         return itemDto;
     }
 
-    public Map<String, Object> buildParamMap(GrnReportDto grnReportDto, Set<ItemDto> itemDtos) {
+    public Map<String, Object> buildParamMap(GrnReportDto grnReportDto) {
         Map<String, Object> map = new HashMap<>();
         map.put(FieldConstants.COMPANY_NAME, grnReportDto.getCompanyName());
         map.put(FieldConstants.COMPANY_ADDRESS, grnReportDto.getCompanyAddress());

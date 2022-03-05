@@ -51,14 +51,20 @@ public class ReportsQueryConstants {
             " inner join br2.mst_state ms on ms.id = m.comp_state_id " +
             " where m.hc_id = :hcId and tgi.plant_id = :plantId and mcv.cust_vendor_id = :vendorId and tpoi.po_iw_id = :poId and tp.con_id = :conId";
 
-    public static final String GET_PO_REPORT_DATA = "select mst_host_company.comp_name,mst_host_company.comp_addr,mst_host_company.mob_no1, " +
-            " trn_po.po_id,trn_po.po_date,mst_plant.plant_name,mst_plant.plant_address, mst_customer_vendor.gst_no,mst_customer_vendor.cust_vendor_code,mst_customer_vendor.cust_vendor_name, " +
-            " mst_customer_vendor.gst_no,mst_customer_vendor.cust_vendor_firm_name,mst_customer_vendor.mob_no1, " +
-            " mst_item.item_code,mst_item.item_desc,mst_item.hsn_code, trn_po_item.item_qty,trn_po_item.unit_rate,trn_po_item.cgst_rate,trn_po_item.sgst_rate,trn_po_item.igst_rate " +
-            " from mst_host_company inner join trn_grn_info on mst_host_company.hc_id = trn_grn_info.hc_id inner join trn_po on " +
-            " trn_grn_info.po_id = trn_po.po_id inner join trn_po_item on trn_po_item.po_id =  trn_po.po_id inner join mst_plant on " +
-            " mst_plant.plant_id = trn_po.plant_id inner join mst_customer_vendor on mst_customer_vendor.cust_vendor_id = trn_po.vendor_id " +
-            " inner join mst_item on mst_item.item_id = trn_grn_info.item_id where trn_po.po_id = :id ";
+    public static final String GET_PO_REPORT_DATA = "select m.comp_name, m.comp_addr ,m.email_id1 ,m.mob_no1,  " +
+            " tp.po_id ,tp.po_date ,mp.plant_name  , mp.plant_address, mp.plant_contact_mobile_no ,mp.register_mob_no,mp.email , m.gst_no , mcv.cust_vendor_code ,mcv.cust_vendor_name , mcv.cust_vendor_addr , mcv.gst_no as supplierGST , " +
+            " mcvc.con_name , mcvc.mob_no1 as vendorContactNo, mi.item_code , mi.item_desc , mi.hsn_code, tpi.item_qty , mu.unit_name , " +
+            " tpi.disc_percent ,tpi.unit_rate , tpi.cgst_rate , tpi.sgst_rate ,tpi.igst_rate,tpi.freight_charges ,tpi.tax" +
+            " from br2.mst_host_company m" +
+            " inner join br2.trn_grn_info tgi on m.hc_id = tgi.hc_id " +
+            " inner join br2.trn_po tp on m.hc_id=tp.hc_id  " +
+            " inner join br2.trn_po_item tpi on  tpi.po_id=tp.po_id " +
+            " inner join br2.mst_plant mp on tp.plant_id= mp.plant_id  " +
+            " inner join br2.mst_customer_vendor mcv on tp.vendor_id=mcv.cust_vendor_id " +
+            " inner join br2.mst_cust_vendor_contact mcvc on tp.vendor_id=mcvc.cust_vendor_id " +
+            " inner join br2.mst_item mi on tpi.item_id=mi.item_id " +
+            " inner join br2.mst_unit mu on mu.unit_id = mi.unit_id " +
+            " where mcv.is_customer=0 and tp.po_id = :poId";
 
     public static final String GET_TAX_INVOICE_REPORT_DATA = "select mst_host_company.comp_name,mst_host_company.comp_addr,mst_host_company.mob_no1, " +
             " trn_invoice_info.invoice_code,trn_invoice_info.invoice_date,trn_so.so_date,trn_so.so_id,mst_customer_vendor.cust_vendor_code, " +

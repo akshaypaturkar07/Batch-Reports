@@ -69,4 +69,22 @@ public class ReportsController {
         }
         return responseEntity;
     }
+
+    @ApiOperation(value = SwaggerConstants.GENERATE_GRN_REPORT, nickname = SwaggerConstants.GENERATE_GRN_REPORT_NICK)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = SwaggerConstants.GENERATE_GRN_REPORT_200_OK)})
+    @GetMapping(value = "/poReport",produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<?> generatePOReport(@RequestParam BigDecimal poId,HttpServletResponse response) {
+        ResponseEntity responseEntity = null;
+        byte[] poReportDto = null;
+        try {
+            poReportDto = reportService.generatePOReports(poId,response);
+            if(poReportDto !=null && poReportDto.length > 0){
+                responseEntity = new ResponseEntity<>(poReportDto, HttpStatus.OK);
+            }
+        } catch (Exception e) {
+            logger.error("Exception occurred while generating PO reports {}" + e);
+            responseEntity = new ResponseEntity<>(poReportDto, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
 }
