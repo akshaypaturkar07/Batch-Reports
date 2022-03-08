@@ -375,3 +375,8 @@ insert into mst_plant values(
 null,1,null,null,'12345',1,1,'3/1/2021 12:37:21 AM',null,null,0,null
 
 );
+
+insert into mst_site values(628,1,1,'MAHINDRA ELECTRIC',1,1,1,current_timestamp ,3,745,0,'MAHINDRA ELECTRIC,Mahindra Vehicle Manufacturers Ltd.,,Plot No A-1, Phase No IV, Chakan MIDC',1,null,null,null,0,'I')
+insert into mst_site values(629,1,1,'WASULI',1,1,1,current_timestamp ,2,746,0,'WASULI',1,null,null,null,0,'I')
+insert into mst_site values(630,1,1,'ESRCM',1,1,1,current_timestamp ,8,747,0,'ESRCM ESR Industrial Park',1,null,null,null,0,'I')
+  insert into mst_site values(631,1,1,'RMC PLANT',1,1,1,current_timestamp ,9,748,0,'RMC PLANT',1,null,null,null,0,'I')

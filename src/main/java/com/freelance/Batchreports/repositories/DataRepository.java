@@ -21,5 +21,5 @@ public interface DataRepository extends CrudRepository<TrnRmcBatchDetail, BigDec
     Iterable<Object[]> getPOReportsData(@Param("poId") BigDecimal poId);
 
     @Query(value = ReportsQueryConstants.GET_TAX_INVOICE_REPORT_DATA,nativeQuery = true)
-    Iterable<Object[]> getTaxInvoiceReportsData();
+    Iterable<Object[]> getTaxInvoiceReportsData(@Param("hc_id") BigDecimal hc_id);
 }
