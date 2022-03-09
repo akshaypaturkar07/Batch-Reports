@@ -340,7 +340,7 @@
 			<textField>
 				<reportElement x="0" y="188" width="274" height="30" uuid="2480a2d1-bdc7-42b8-8751-d593dce407c2"/>
 				<textElement>
-					<font isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
 					<paragraph leftIndent="2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{custVendorName}]]></textFieldExpression>
@@ -362,7 +362,7 @@
 			<textField>
 				<reportElement x="274" y="188" width="281" height="30" uuid="89ba1519-4882-4fda-8ad6-11ce2d50e523"/>
 				<textElement verticalAlignment="Top">
-					<font size="10" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
 					<paragraph leftIndent="2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{companyName}]]></textFieldExpression>
